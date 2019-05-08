@@ -100,7 +100,7 @@ resource "aws_s3_bucket" "log_bucket" {
 # Options App ALB Primary
 ##################################################################################
 module "cluster_alb_1" {
-  # source = "git::https://gitlab.nonprod.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-alb.git"
+  source = "git::https://gitlab.nonprod.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-alb.git?ref=feature/nlb-support"
   source = "../cmg-terraform-aws-alb"
 
   load_balancer_type = "network"
