@@ -1,0 +1,42 @@
+##################################################################################
+# Options ASG Resource Primary
+##################################################################################
+module "green_cluster_asg" {
+  source = "./modules/cluster-asg"
+
+  cluster_name = "${var.cluster_name}"
+  color        = "green"
+
+  image_id      = "${var.green_image_id}"
+  instance_type = "${var.green_instance_type}"
+  ssh_key_name  = "${var.ssh_key_name}"
+
+  security_groups      = ["${module.cluster_sg.this_security_group_id}"]
+  target_group_arns    = ["${element(module.green_cluster_alb.target_group_arns,0)}"]
+  iam_instance_profile = "${module.cluster_iam.profile_name}"
+
+  # Auto scaling group
+  subnet_ids                = "${var.instance_subnet_ids}"
+
+  min_size                  = "${var.green_min_size}"
+  max_size                  = "${var.green_max_size}"
+  desired_capacity          = "${var.green_desired_capacity}"
+  wait_for_capacity_timeout = "${var.green_wait_for_capacity_timeout}"
+
+  min_size_start          = "${var.green_min_size_start}"
+  max_size_start          = "${var.green_max_size_start}"
+  desired_capacity_start  = "${var.green_desired_capacity_start}"
+  recurrence_start        = "${var.green_recurrence_start}"
+
+  min_size_stop           = "${var.green_min_size_stop}"
+  max_size_stop           = "${var.green_max_size_stop}"
+  desired_capacity_stop   = "${var.green_desired_capacity_stop}"
+  recurrence_stop         = "${var.green_recurrence_stop}"
+
+  product         = "${var.product}"
+  product_family  = "${var.product_family}"
+  role            = "${var.role} GREEN"
+  cost_code       = "${var.cost_code}"
+  owner           = "${var.owner}"
+  version_tag     = "${var.version_tag}"
+}
