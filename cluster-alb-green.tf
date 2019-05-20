@@ -1,13 +1,17 @@
 module "green_cluster_alb" {
   source = "./modules/cluster-alb"
 
-  # count = "${var.alb_enabled}"
+  enabled = "${var.alb_enabled}"
 
   vpc_id  = "${var.vpc_id}"
   subnets = "${var.alb_subnet_ids}"
 
   cluster_name = "${var.cluster_name}"
   color = "green"
+
+  security_groups = "${var.alb_security_groups}"
+
+  load_balancer_is_internal = "${var.alb_is_internal}"
 
   computed_ingress_with_source_security_group_id           = "${var.alb_computed_ingress_with_source_security_group_id}"
   number_of_computed_ingress_with_source_security_group_id = "${var.alb_number_of_computed_ingress_with_source_security_group_id}"
@@ -28,7 +32,7 @@ module "green_cluster_alb" {
   role            = "${var.role} GREEN"
   cost_code       = "${var.cost_code}"
   owner           = "${var.owner}"
-  version_tag     = "${var.version_tag}"
+  version_tag     = "${var.green_version_tag}"
 
   https_listeners_count = "${var.green_alb_https_listeners_count}"
   https_listeners       = "${var.green_alb_https_listeners}"
@@ -41,6 +45,8 @@ module "green_cluster_alb" {
 }
 
 resource "aws_route53_record" "green_cluster_alb" {
+  count = "${var.alb_enabled ? 1 : 0}"
+
   name = "${var.cluster_name}-alb"
 
   zone_id = "${var.alb_route53_zone_id}"

@@ -10,6 +10,8 @@ module "cluster_alb_sg" {
 
   egress_rules  = ["all-all"]
 
+  create = "${var.enabled}" # sg module uses `create` not `enabled` variable
+
   computed_ingress_with_source_security_group_id = "${var.computed_ingress_with_source_security_group_id}"
   number_of_computed_ingress_with_source_security_group_id = "${var.number_of_computed_ingress_with_source_security_group_id}"
 
@@ -40,13 +42,17 @@ module "cluster_alb_sg" {
 ##################################################################################
 module "cluster_alb" {
   source = "git::https://gitlab.nonprod.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-alb.git?ref=master"
-  # source = "../cmg-terraform-aws-alb"
+
+  enabled = "${var.enabled}"
 
   load_balancer_name               = "${var.cluster_name}-${var.color}-alb"
   load_balancer_is_internal        = "${var.load_balancer_is_internal}"
-  security_groups                  = ["${module.cluster_alb_sg.this_security_group_id}"]
-  enable_cross_zone_load_balancing = "true"
-  enable_deletion_protection       = "true"
+  security_groups                  = [
+    "${module.cluster_alb_sg.this_security_group_id}",
+    "${var.security_groups}"
+  ]
+  enable_cross_zone_load_balancing = true
+  enable_deletion_protection       = false
 
   # logging_enabled = false
   log_bucket_name     = "${var.log_bucket_name}"
@@ -84,6 +90,8 @@ module "cluster_alb" {
 ##################################################################################
 
 module "cluster_alb_route53_aliases" {
+  enabled         = "${var.enabled ? "true" : "false"}"
+
   source          = "git::https://gitlab.nonprod.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-route53-alias.git"
   aliases         = "${var.route53_aliases_name}"
   parent_zone_id  = "${var.route53_zone_id}"

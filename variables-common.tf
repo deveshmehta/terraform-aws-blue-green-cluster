@@ -13,10 +13,6 @@ variable "role" {
   description = "Role of the product within the account"
 }
 
-variable "version_tag" {
-  description = "The version of the product"
-}
-
 variable "product" {
   description = "Product"
 }

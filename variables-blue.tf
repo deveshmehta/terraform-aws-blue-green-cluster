@@ -69,39 +69,6 @@ variable "blue_desired_capacity_stop" {
   description = "How many instances to stop when the ASG stop hook is triggered"
 }
 
-variable "blue_instance_computed_ingress_with_source_security_group_id" {
-  description = "List of objects describing the inbound security group rules permitted on the instances for the blue cluster"
-  type        = "list"
-  default     = []
-}
-
-variable "blue_number_of_instance_computed_ingress_with_source_security_group_id" {
-  description = "The count of computed ingress security groups by ID for the blue cluster"
-  default     = 0
-}
-
-variable "blue_lb_computed_ingress_with_source_security_group_id" {
-  description = "List of objects describing the inbound security group rules permitted on the Load balancers"
-  type        = "list"
-  default     = []
-}
-
-variable "blue_number_of_lb_computed_ingress_with_source_security_group_id" {
-  description = "The count of computed ingress security groups by ID for the Load balancer"
-  default     = 0
-}
-
-variable "blue_lb_computed_ingress_with_cidr_blocks" {
-  description = "List of objects describing the ingress cidr blocks rules permitted for the loadbalancer"
-  type        = "list"
-  default     = []
-}
-
-variable "blue_number_of_lb_computed_ingress_with_cidr_blocks" {
-  description = "The count of computed ingress cidr blocks for the loadbalancer"
-  default     = 0
-}
-
 variable "blue_route53_aliases_name" {
   description = "List of ALB Route53 aliases"
   type = "list"
@@ -150,4 +117,8 @@ variable "blue_nlb_target_groups" {
   description = "The target groups to attach to the blue ALB"
   type = "list"
   default = []
+}
+
+variable "blue_version_tag" {
+  description = "The version of the blue product release"
 }

@@ -6,6 +6,16 @@ variable "alb_route53_zone_id" {
   description = "The route 53 zone ID to use for the ALB DNS entries"
 }
 
+variable "alb_is_internal" {
+  description = "Whether the ALB should be configured with a private IP only, or both private and public IPs"
+  default = true
+}
+
+variable "alb_security_groups" {
+  description = "Attach security groups directly to the ALB by their ID"
+  type = "list"
+  default = []
+}
 
 variable "alb_computed_ingress_with_source_security_group_id" {
   description = "List of objects describing the inbound security group rules permitted on the albs for the cluster albs"

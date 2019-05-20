@@ -140,3 +140,8 @@ variable "green_nlb_target_groups" {
   type = "list"
   default = []
 }
+
+variable "green_version_tag" {
+  description = "The version of the green product release"
+}
+

@@ -14,7 +14,6 @@ resource "aws_s3_bucket" "log_bucket" {
     "Costcode", "${var.cost_code}",
     "Owner", "${var.owner}",
     "Role" , "ALB Logs",
-    "Version" , "${var.version_tag}",
     "Persistence", "true",
     "Terraform", "True",
     "load_balancer_is_internal", "True"

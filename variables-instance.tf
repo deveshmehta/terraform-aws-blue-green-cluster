@@ -8,6 +8,12 @@ variable "instance_route53_zone_id" {
   description = "The route 53 zone ID to use for the instance DNS entries"
 }
 
+variable "instance_security_groups" {
+  description = "Attach security groups directly to the instances by their ID"
+  type = "list"
+  default = []
+}
+
 variable "instance_computed_ingress_with_source_security_group_id" {
   description = "List of objects describing the inbound security group rules permitted on the instances for the cluster instances"
   type        = "list"

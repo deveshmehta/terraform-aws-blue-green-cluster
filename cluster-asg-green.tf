@@ -11,7 +11,11 @@ module "green_cluster_asg" {
   instance_type = "${var.green_instance_type}"
   ssh_key_name  = "${var.ssh_key_name}"
 
-  security_groups      = ["${module.cluster_sg.this_security_group_id}"]
+  security_groups = [
+    "${module.cluster_sg.this_security_group_id}",
+    "${var.instance_security_groups}"
+  ]
+
   target_group_arns    = ["${element(module.green_cluster_alb.target_group_arns,0)}"]
   iam_instance_profile = "${module.cluster_iam.profile_name}"
 
@@ -38,5 +42,5 @@ module "green_cluster_asg" {
   role            = "${var.role} GREEN"
   cost_code       = "${var.cost_code}"
   owner           = "${var.owner}"
-  version_tag     = "${var.version_tag}"
+  version_tag     = "${var.green_version_tag}"
 }

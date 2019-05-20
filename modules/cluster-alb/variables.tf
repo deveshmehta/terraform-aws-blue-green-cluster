@@ -36,6 +36,12 @@ variable "tags" {
   default     = []
 }
 
+variable "security_groups" {
+  description = "Security groups to attach directly to the ALB"
+  type = "list"
+  default = []
+}
+
 variable "computed_ingress_with_source_security_group_id" {
   description = "List of objects describing the inbound security group rules permitted on the Load balancers"
   type        = "list"
@@ -138,3 +144,7 @@ variable "route53_zone_id" {
   description = "Route53 Zone ID"
 }
 
+variable "enabled" {
+  description = "Whether to provision an ALB or not"
+  default = true
+}

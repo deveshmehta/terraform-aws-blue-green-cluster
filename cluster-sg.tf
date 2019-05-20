@@ -29,7 +29,6 @@ module "cluster_sg" {
     Costcode         = "${var.cost_code}"
     Owner            = "${var.owner}"
     Role             = "${var.role}"
-    Version          = "${var.version_tag}"
     Persistence      = "true"
     Terraform        = "True"
  }

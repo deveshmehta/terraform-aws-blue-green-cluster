@@ -2,16 +2,18 @@
 # NLB
 ##################################################################################
 module "cluster_nlb" {
-  source = "git::https://gitlab.nonprod.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-alb.git?ref=feature/nlb-support"
-  # source = "../cmg-terraform-aws-alb"
+  source = "git::https://gitlab.nonprod.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-alb.git?ref=feature/nlb-support-with-enabled-option"
+  # source = "../../../cmg-terraform-aws-alb"
+
+  enabled = "${var.enabled}"
 
   load_balancer_type               = "network"
 
   load_balancer_name               = "${var.cluster_name}-${var.color}-nlb"
   load_balancer_is_internal        = "${var.load_balancer_is_internal}"
 
-  enable_cross_zone_load_balancing = "true"
-  enable_deletion_protection       = "true"
+  enable_cross_zone_load_balancing = true
+  enable_deletion_protection       = false
 
   log_bucket_name     = "${var.log_bucket_name}"
   log_location_prefix = "${var.cluster_name}-${var.color}-nlb-logs"
@@ -48,6 +50,8 @@ module "cluster_nlb" {
 ##################################################################################
 
 module "cluster_nlb_route53_aliases" {
+  enabled         = "${var.enabled ? "true" : "false"}"
+
   source          = "git::https://gitlab.nonprod.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-route53-alias.git"
   aliases         = "${var.route53_aliases_name}"
   parent_zone_id  = "${var.route53_zone_id}"

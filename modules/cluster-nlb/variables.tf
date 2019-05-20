@@ -77,7 +77,7 @@ variable "target_groups" {
 
 variable "load_balancer_is_internal" {
   description = "Whether the load balancer should be resolvable on the public subnet"
-  default = false
+  default = true
 }
 
 variable "log_bucket_name" {
@@ -94,3 +94,7 @@ variable "route53_zone_id" {
   description = "Route53 zone ID"
 }
 
+variable "enabled" {
+  description = "Whether to provision an NLB or not"
+  default = false
+}

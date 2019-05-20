@@ -5,3 +5,8 @@ variable "nlb_subnet_ids" {
 variable "nlb_route53_zone_id" {
   description = "The route 53 zone ID to use for the NLB DNS entries"
 }
+
+variable "nlb_is_internal" {
+  description = "Whether the NLB should be configured with a private IP only, or both private and public IPs"
+  default = true
+}

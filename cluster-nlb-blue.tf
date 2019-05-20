@@ -1,13 +1,15 @@
 module "blue_cluster_nlb" {
   source = "./modules/cluster-nlb"
 
-  # count = "${var.nlb_enabled}"
+  enabled = "${var.nlb_enabled}"
 
   vpc_id  = "${var.vpc_id}"
   subnets = "${var.nlb_subnet_ids}"
 
   cluster_name = "${var.cluster_name}"
   color = "blue"
+
+  load_balancer_is_internal = "${var.nlb_is_internal}"
 
   log_bucket_name = "${aws_s3_bucket.log_bucket.id}"
 
@@ -16,7 +18,7 @@ module "blue_cluster_nlb" {
   role            = "${var.role} BLUE"
   cost_code       = "${var.cost_code}"
   owner           = "${var.owner}"
-  version_tag     = "${var.version_tag}"
+  version_tag     = "${var.blue_version_tag}"
 
   https_listeners_count = "${var.blue_nlb_https_listeners_count}"
   https_listeners       = "${var.blue_nlb_https_listeners}"
@@ -29,6 +31,8 @@ module "blue_cluster_nlb" {
 }
 
 resource "aws_route53_record" "blue_cluster_nlb" {
+  count = "${var.nlb_enabled ? 1 : 0}"
+
   name = "${var.cluster_name}-nlb"
 
   zone_id = "${var.nlb_route53_zone_id}"
