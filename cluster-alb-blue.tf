@@ -37,6 +37,9 @@ module "blue_cluster_alb" {
   https_listeners_count = "${var.blue_alb_https_listeners_count}"
   https_listeners       = "${var.blue_alb_https_listeners}"
 
+  http_tcp_listeners_count = "${var.blue_alb_http_tcp_listeners_count}"
+  http_tcp_listeners       = "${var.blue_alb_http_tcp_listeners}"
+
   target_groups_count = "${var.blue_alb_target_groups_count}"
   target_groups       = "${var.blue_alb_target_groups}"
 

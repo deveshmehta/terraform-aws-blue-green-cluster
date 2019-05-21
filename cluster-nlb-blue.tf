@@ -23,6 +23,9 @@ module "blue_cluster_nlb" {
   https_listeners_count = "${var.blue_nlb_https_listeners_count}"
   https_listeners       = "${var.blue_nlb_https_listeners}"
 
+  http_tcp_listeners_count = "${var.blue_nlb_http_tcp_listeners_count}"
+  http_tcp_listeners       = "${var.blue_nlb_http_tcp_listeners}"
+
   target_groups_count = "${var.blue_nlb_target_groups_count}"
   target_groups       = "${var.blue_nlb_target_groups}"
 

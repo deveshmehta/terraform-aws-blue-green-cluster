@@ -8,6 +8,10 @@ variable "blue_application_ports" {
   default = []
 }
 
+variable "blue_version_tag" {
+  description = "The version of the blue product release"
+}
+
 variable "blue_instance_type" {
   description = "The instance type to use for the blue cluster"
   default = "t2.small"
@@ -86,6 +90,17 @@ variable "blue_alb_https_listeners" {
   default = []
 }
 
+variable "blue_alb_http_tcp_listeners_count" {
+  description = "The number of HTTP/TCP listeners to attach the blue ALB"
+  default = 0
+}
+
+variable "blue_alb_http_tcp_listeners" {
+  description = "The HTTP/TCP listeners to attach to the blue ALB"
+  type = "list"
+  default = []
+}
+
 variable "blue_alb_target_groups_count" {
   description = "The number of target groups to attach to the blue ALB"
   default = 0
@@ -98,12 +113,23 @@ variable "blue_alb_target_groups" {
 }
 
 variable "blue_nlb_https_listeners_count" {
-  description = "The number of HTTPS listeners to attach the blue ALB"
+  description = "The number of HTTPS listeners to attach the blue NLB"
   default = 0
 }
 
 variable "blue_nlb_https_listeners" {
-  description = "The listeners to attach to the blue ALB"
+  description = "The listeners to attach to the blue NLB"
+  type = "list"
+  default = []
+}
+
+variable "blue_nlb_http_tcp_listeners_count" {
+  description = "The number of HTTP/TCP listeners to attach the blue NLB"
+  default = 0
+}
+
+variable "blue_nlb_http_tcp_listeners" {
+  description = "The HTTP/TCP listeners to attach to the blue NLB"
   type = "list"
   default = []
 }
@@ -119,6 +145,4 @@ variable "blue_nlb_target_groups" {
   default = []
 }
 
-variable "blue_version_tag" {
-  description = "The version of the blue product release"
-}
+

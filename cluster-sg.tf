@@ -31,11 +31,11 @@ module "cluster_sg" {
     Role             = "${var.role}"
     Persistence      = "true"
     Terraform        = "True"
- }
+  }
 }
 
 resource "aws_security_group_rule" "cluster_sg_ingress_from_blue_alb" {
-  count = "${length(var.blue_application_ports)}"
+  count = "${var.alb_enabled ? length(var.blue_application_ports) : 0}"
 
   type                     = "ingress"
   from_port                = "${element(var.blue_application_ports, count.index)}"
@@ -49,7 +49,7 @@ resource "aws_security_group_rule" "cluster_sg_ingress_from_blue_alb" {
 
 
 resource "aws_security_group_rule" "cluster_sg_ingress_from_green_alb" {
-  count = "${length(var.green_application_ports)}"
+  count = "${var.alb_enabled ? length(var.green_application_ports) : 0}"
 
   type                     = "ingress"
   from_port                = "${element(var.green_application_ports, count.index)}"

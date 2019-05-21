@@ -16,7 +16,7 @@ module "blue_cluster_asg" {
     "${var.instance_security_groups}"
   ]
 
-  target_group_arns    = ["${element(module.blue_cluster_alb.target_group_arns,0)}"]
+  target_group_arns    = ["${element(concat(module.blue_cluster_alb.target_group_arns, module.blue_cluster_nlb.target_group_arns),0)}"]
   iam_instance_profile = "${module.cluster_iam.profile_name}"
 
   # Auto scaling group
