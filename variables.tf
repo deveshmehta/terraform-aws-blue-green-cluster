@@ -13,15 +13,22 @@ variable "iam_policies" {
   type = "list"
 }
 
-variable "nlb_enabled" {
+variable "internal_nlb_enabled" {
   description = "Whether to create an NLB or not"
   default = false
 }
 
-variable "alb_enabled" {
-  description = "Whether to create an ALB or not"
+variable "external_nlb_enabled" {
+  description = "Whether to create an NLB or not"
+  default = false
+}
+
+variable "external_alb_enabled" {
+  description = "Whether to create an external ALB or not"
   default = true
 }
 
-
-
+variable "internal_alb_enabled" {
+  description = "Whether to create an internal ALB or not"
+  default = true
+}

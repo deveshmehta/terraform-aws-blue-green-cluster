@@ -34,8 +34,8 @@ module "cluster_sg" {
   }
 }
 
-resource "aws_security_group_rule" "cluster_sg_ingress_from_blue_alb" {
-  count = "${var.alb_enabled ? length(var.blue_application_ports) : 0}"
+resource "aws_security_group_rule" "cluster_sg_ingress_from_blue_internal_alb" {
+  count = "${var.internal_alb_enabled ? length(var.blue_application_ports) : 0}"
 
   type                     = "ingress"
   from_port                = "${element(var.blue_application_ports, count.index)}"
@@ -43,13 +43,13 @@ resource "aws_security_group_rule" "cluster_sg_ingress_from_blue_alb" {
   protocol                 = "tcp"
   description              = "${var.cluster_name} Blue ALB"
   security_group_id        = "${module.cluster_sg.this_security_group_id}"
-  source_security_group_id = "${module.blue_cluster_alb.security_group_id}"
-  depends_on               = ["module.blue_cluster_alb"]
+  source_security_group_id = "${module.blue_cluster_internal_alb.security_group_id}"
+  depends_on               = ["module.blue_cluster_internal_alb"]
 }
 
 
-resource "aws_security_group_rule" "cluster_sg_ingress_from_green_alb" {
-  count = "${var.alb_enabled ? length(var.green_application_ports) : 0}"
+resource "aws_security_group_rule" "cluster_sg_ingress_from_green_internal_alb" {
+  count = "${var.internal_alb_enabled ? length(var.green_application_ports) : 0}"
 
   type                     = "ingress"
   from_port                = "${element(var.green_application_ports, count.index)}"
@@ -57,6 +57,33 @@ resource "aws_security_group_rule" "cluster_sg_ingress_from_green_alb" {
   protocol                 = "tcp"
   description              = "${var.cluster_name} Green ALB"
   security_group_id        = "${module.cluster_sg.this_security_group_id}"
-  source_security_group_id = "${module.green_cluster_alb.security_group_id}"
-  depends_on               = ["module.green_cluster_alb"]
+  source_security_group_id = "${module.green_cluster_internal_alb.security_group_id}"
+  depends_on               = ["module.green_cluster_internal_alb"]
+}
+
+resource "aws_security_group_rule" "cluster_sg_ingress_from_blue_external_alb" {
+  count = "${var.external_alb_enabled ? length(var.blue_application_ports) : 0}"
+
+  type                     = "ingress"
+  from_port                = "${element(var.blue_application_ports, count.index)}"
+  to_port                  = "${element(var.blue_application_ports, count.index)}"
+  protocol                 = "tcp"
+  description              = "${var.cluster_name} Blue ALB"
+  security_group_id        = "${module.cluster_sg.this_security_group_id}"
+  source_security_group_id = "${module.blue_cluster_external_alb.security_group_id}"
+  depends_on               = ["module.blue_cluster_external_alb"]
+}
+
+
+resource "aws_security_group_rule" "cluster_sg_ingress_from_green_external_alb" {
+  count = "${var.external_alb_enabled ? length(var.green_application_ports) : 0}"
+
+  type                     = "ingress"
+  from_port                = "${element(var.green_application_ports, count.index)}"
+  to_port                  = "${element(var.green_application_ports, count.index)}"
+  protocol                 = "tcp"
+  description              = "${var.cluster_name} Green ALB"
+  security_group_id        = "${module.cluster_sg.this_security_group_id}"
+  source_security_group_id = "${module.green_cluster_external_alb.security_group_id}"
+  depends_on               = ["module.green_cluster_external_alb"]
 }

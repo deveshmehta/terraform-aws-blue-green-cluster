@@ -8,10 +8,14 @@ data "aws_iam_policy_document" "cluster_alb_log_bucket_policy" {
     actions = ["s3:PutObject"]
 
     resources = [
-      "arn:aws:s3:::${var.cluster_name}-logs/${var.cluster_name}-blue-alb-logs/AWSLogs/${data.aws_caller_identity.current.account_id}/*",
-      "arn:aws:s3:::${var.cluster_name}-logs/${var.cluster_name}-green-alb-logs/AWSLogs/${data.aws_caller_identity.current.account_id}/*",
-      "arn:aws:s3:::${var.cluster_name}-logs/${var.cluster_name}-blue-nlb-logs/AWSLogs/${data.aws_caller_identity.current.account_id}/*",
-      "arn:aws:s3:::${var.cluster_name}-logs/${var.cluster_name}-green-nlb-logs/AWSLogs/${data.aws_caller_identity.current.account_id}/*"
+      "arn:aws:s3:::${var.cluster_name}-logs/${var.cluster_name}-blue-internal-alb-logs/AWSLogs/${data.aws_caller_identity.current.account_id}/*",
+      "arn:aws:s3:::${var.cluster_name}-logs/${var.cluster_name}-green-internal-alb-logs/AWSLogs/${data.aws_caller_identity.current.account_id}/*",
+      "arn:aws:s3:::${var.cluster_name}-logs/${var.cluster_name}-blue-internal-nlb-logs/AWSLogs/${data.aws_caller_identity.current.account_id}/*",
+      "arn:aws:s3:::${var.cluster_name}-logs/${var.cluster_name}-green-internal-nlb-logs/AWSLogs/${data.aws_caller_identity.current.account_id}/*",
+      "arn:aws:s3:::${var.cluster_name}-logs/${var.cluster_name}-blue-external-alb-logs/AWSLogs/${data.aws_caller_identity.current.account_id}/*",
+      "arn:aws:s3:::${var.cluster_name}-logs/${var.cluster_name}-green-external-alb-logs/AWSLogs/${data.aws_caller_identity.current.account_id}/*",
+      "arn:aws:s3:::${var.cluster_name}-logs/${var.cluster_name}-blue-external-nlb-logs/AWSLogs/${data.aws_caller_identity.current.account_id}/*",
+      "arn:aws:s3:::${var.cluster_name}-logs/${var.cluster_name}-green-external-nlb-logs/AWSLogs/${data.aws_caller_identity.current.account_id}/*"
     ]
 
     principals {

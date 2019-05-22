@@ -112,12 +112,23 @@ variable "green_alb_http_tcp_listeners" {
   default = []
 }
 
-variable "green_alb_target_groups_count" {
+variable "green_internal_alb_target_groups_count" {
   description = "The number of target groups to attach to the green ALB"
   default = 0
 }
 
-variable "green_alb_target_groups" {
+variable "green_internal_alb_target_groups" {
+  description = "The target groups to attach to the green ALB"
+  type = "list"
+  default = []
+}
+
+variable "green_external_alb_target_groups_count" {
+  description = "The number of target groups to attach to the green ALB"
+  default = 0
+}
+
+variable "green_external_alb_target_groups" {
   description = "The target groups to attach to the green ALB"
   type = "list"
   default = []
@@ -145,12 +156,23 @@ variable "green_nlb_http_tcp_listeners" {
   default = []
 }
 
-variable "green_nlb_target_groups_count" {
+variable "green_internal_nlb_target_groups_count" {
   description = "The number of target groups to attach to the green NLB"
   default = 0
 }
 
-variable "green_nlb_target_groups" {
+variable "green_internal_nlb_target_groups" {
+  description = "The target groups to attach to the green NLB"
+  type = "list"
+  default = []
+}
+
+variable "green_external_nlb_target_groups_count" {
+  description = "The number of target groups to attach to the green NLB"
+  default = 0
+}
+
+variable "green_external_nlb_target_groups" {
   description = "The target groups to attach to the green NLB"
   type = "list"
   default = []

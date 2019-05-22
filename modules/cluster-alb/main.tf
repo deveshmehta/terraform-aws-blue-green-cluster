@@ -4,7 +4,7 @@
 module "cluster_alb_sg" {
   source = "git::https://gitlab.nonprod.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-security-group.git"
 
-  name        = "${var.cluster_name}-${var.color}-alb-sg"
+  name        = "${var.cluster_name}-${var.color}-${var.load_balancer_is_internal ? "internal" : "external"}-alb-sg"
   description = "${var.cluster_name} ${var.color} ALB Security Group"
   vpc_id      = "${var.vpc_id}"
 
@@ -45,7 +45,7 @@ module "cluster_alb" {
 
   enabled = "${var.enabled}"
 
-  load_balancer_name               = "${var.cluster_name}-${var.color}-alb"
+  load_balancer_name               = "${var.cluster_name}-${var.color}-${var.load_balancer_is_internal ? "int" : "ext"}-alb"
   load_balancer_is_internal        = "${var.load_balancer_is_internal}"
   security_groups                  = [
     "${module.cluster_alb_sg.this_security_group_id}",
@@ -56,7 +56,7 @@ module "cluster_alb" {
 
   # logging_enabled = false
   log_bucket_name     = "${var.log_bucket_name}"
-  log_location_prefix = "${var.cluster_name}-${var.color}-alb-logs"
+  log_location_prefix = "${var.cluster_name}-${var.color}-${var.load_balancer_is_internal ? "internal" : "external"}-alb-logs"
   subnets             = "${split(",", var.subnets)}"
 
   tags = "${map(

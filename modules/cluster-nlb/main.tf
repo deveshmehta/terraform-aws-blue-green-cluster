@@ -9,14 +9,14 @@ module "cluster_nlb" {
 
   load_balancer_type               = "network"
 
-  load_balancer_name               = "${var.cluster_name}-${var.color}-nlb"
+  load_balancer_name               = "${var.cluster_name}-${var.color}-${var.load_balancer_is_internal ? "int" : "ext"}-nlb"
   load_balancer_is_internal        = "${var.load_balancer_is_internal}"
 
   enable_cross_zone_load_balancing = true
   enable_deletion_protection       = false
 
   log_bucket_name     = "${var.log_bucket_name}"
-  log_location_prefix = "${var.cluster_name}-${var.color}-nlb-logs"
+  log_location_prefix = "${var.cluster_name}-${var.color}-${var.load_balancer_is_internal ? "internal" : "external"}-nlb-logs"
   subnets             = "${split(",", var.subnets)}"
 
   tags = "${map(

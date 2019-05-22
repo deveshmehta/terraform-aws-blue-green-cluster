@@ -101,12 +101,23 @@ variable "blue_alb_http_tcp_listeners" {
   default = []
 }
 
-variable "blue_alb_target_groups_count" {
+variable "blue_internal_alb_target_groups_count" {
   description = "The number of target groups to attach to the blue ALB"
   default = 0
 }
 
-variable "blue_alb_target_groups" {
+variable "blue_internal_alb_target_groups" {
+  description = "The target groups to attach to the blue ALB"
+  type = "list"
+  default = []
+}
+
+variable "blue_external_alb_target_groups_count" {
+  description = "The number of target groups to attach to the blue ALB"
+  default = 0
+}
+
+variable "blue_external_alb_target_groups" {
   description = "The target groups to attach to the blue ALB"
   type = "list"
   default = []
@@ -134,12 +145,23 @@ variable "blue_nlb_http_tcp_listeners" {
   default = []
 }
 
-variable "blue_nlb_target_groups_count" {
+variable "blue_internal_nlb_target_groups_count" {
   description = "The number of target groups to attach to the blue ALB"
   default = 0
 }
 
-variable "blue_nlb_target_groups" {
+variable "blue_internal_nlb_target_groups" {
+  description = "The target groups to attach to the blue ALB"
+  type = "list"
+  default = []
+}
+
+variable "blue_external_nlb_target_groups_count" {
+  description = "The number of target groups to attach to the blue ALB"
+  default = 0
+}
+
+variable "blue_external_nlb_target_groups" {
   description = "The target groups to attach to the blue ALB"
   type = "list"
   default = []
