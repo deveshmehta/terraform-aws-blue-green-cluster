@@ -7,7 +7,7 @@ module "blue_cluster_external_alb" {
   subnets = "${var.external_alb_subnet_ids}"
 
   cluster_name = "${var.cluster_name}"
-  color = "blue"
+  color        = "blue"
 
   security_groups = "${var.external_alb_security_groups}"
 
@@ -27,12 +27,12 @@ module "blue_cluster_external_alb" {
 
   log_bucket_name = "${aws_s3_bucket.log_bucket.id}"
 
-  product         = "${var.product}"
-  product_family  = "${var.product_family}"
-  role            = "${var.role} EXTERNAL BLUE"
-  cost_code       = "${var.cost_code}"
-  owner           = "${var.owner}"
-  version_tag     = "${var.blue_version_tag}"
+  product        = "${var.product}"
+  product_family = "${var.product_family}"
+  role           = "${var.role} EXTERNAL BLUE"
+  cost_code      = "${var.cost_code}"
+  owner          = "${var.owner}"
+  version_tag    = "${var.blue_version_tag}"
 
   https_listeners_count = "${var.blue_alb_https_listeners_count}"
   https_listeners       = "${var.blue_alb_https_listeners}"
@@ -50,7 +50,7 @@ module "blue_cluster_external_alb" {
 resource "aws_route53_record" "blue_cluster_external_alb" {
   count = "${var.external_alb_enabled ? 1 : 0}"
 
-  name = "${var.cluster_name}-external-alb"
+  name    = "${var.cluster_name}-external-alb"
   zone_id = "${var.external_alb_route53_zone_id}"
   type    = "CNAME"
   ttl     = "5"

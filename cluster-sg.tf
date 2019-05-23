@@ -10,7 +10,7 @@ module "cluster_sg" {
   egress_rules = ["all-all"]
 
   number_of_computed_ingress_with_source_security_group_id = "${var.instance_number_of_computed_ingress_with_source_security_group_id}"
-  computed_ingress_with_source_security_group_id = "${var.instance_computed_ingress_with_source_security_group_id}"
+  computed_ingress_with_source_security_group_id           = "${var.instance_computed_ingress_with_source_security_group_id}"
 
   number_of_computed_ingress_with_cidr_blocks = "${var.instance_number_of_computed_ingress_with_cidr_blocks}"
   computed_ingress_with_cidr_blocks           = "${var.instance_computed_ingress_with_cidr_blocks}"
@@ -47,7 +47,6 @@ resource "aws_security_group_rule" "cluster_sg_ingress_from_blue_internal_alb" {
   depends_on               = ["module.blue_cluster_internal_alb"]
 }
 
-
 resource "aws_security_group_rule" "cluster_sg_ingress_from_green_internal_alb" {
   count = "${var.internal_alb_enabled ? length(var.green_application_ports) : 0}"
 
@@ -73,7 +72,6 @@ resource "aws_security_group_rule" "cluster_sg_ingress_from_blue_external_alb" {
   source_security_group_id = "${module.blue_cluster_external_alb.security_group_id}"
   depends_on               = ["module.blue_cluster_external_alb"]
 }
-
 
 resource "aws_security_group_rule" "cluster_sg_ingress_from_green_external_alb" {
   count = "${var.external_alb_enabled ? length(var.green_application_ports) : 0}"

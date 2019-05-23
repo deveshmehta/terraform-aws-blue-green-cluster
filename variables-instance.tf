@@ -10,8 +10,8 @@ variable "instance_route53_zone_id" {
 
 variable "instance_security_groups" {
   description = "Attach security groups directly to the instances by their ID"
-  type = "list"
-  default = []
+  type        = "list"
+  default     = []
 }
 
 variable "instance_computed_ingress_with_source_security_group_id" {

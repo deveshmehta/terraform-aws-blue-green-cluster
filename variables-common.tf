@@ -8,7 +8,6 @@ variable "tags" {
   default     = []
 }
 
-
 variable "role" {
   description = "Role of the product within the account"
 }

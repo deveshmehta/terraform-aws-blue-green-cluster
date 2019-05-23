@@ -38,8 +38,8 @@ variable "tags" {
 
 variable "security_groups" {
   description = "Security groups to attach directly to the ALB"
-  type = "list"
-  default = []
+  type        = "list"
+  default     = []
 }
 
 variable "computed_ingress_with_source_security_group_id" {
@@ -63,7 +63,6 @@ variable "number_of_computed_ingress_with_cidr_blocks" {
   description = "The count of computed ingress cidr blocks for the loadbalancer"
   default     = 0
 }
-
 
 variable "computed_egress_with_source_security_group_id" {
   description = "List of objects describing the egress security group rules permitted on the Load balancers"
@@ -97,37 +96,37 @@ variable "subnets" {
 
 variable "http_tcp_listeners" {
   description = "Definition of HTTP/TCP listeners"
-  default = []
+  default     = []
 }
 
 variable "http_tcp_listeners_count" {
   description = "Number of HTTP/TCP listeners"
-  default = 0
+  default     = 0
 }
 
 variable "https_listeners_count" {
   description = "Number of HTTPS listeners"
-  default = 0
+  default     = 0
 }
 
 variable "https_listeners" {
   description = "Definition of HTTPS listeners"
-  default = []
+  default     = []
 }
 
 variable "target_groups_count" {
   description = "Number of HTTPS listeners"
-  default = 0
+  default     = 0
 }
 
 variable "target_groups" {
   description = "Definition of target groups"
-  default = []
+  default     = []
 }
 
 variable "load_balancer_is_internal" {
   description = "Whether the load balancer should be resolvable on the public subnet"
-  default = true
+  default     = true
 }
 
 variable "log_bucket_name" {
@@ -136,8 +135,8 @@ variable "log_bucket_name" {
 
 variable "route53_aliases_name" {
   description = "Route53 aliases"
-  type = "list"
-  default = []
+  type        = "list"
+  default     = []
 }
 
 variable "route53_zone_id" {
@@ -146,5 +145,5 @@ variable "route53_zone_id" {
 
 variable "enabled" {
   description = "Whether to provision an ALB or not"
-  default = true
+  default     = true
 }

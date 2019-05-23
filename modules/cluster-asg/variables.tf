@@ -12,7 +12,7 @@ variable "image_id" {
 
 variable "instance_type" {
   description = "The instance type to use for the cluster"
-  default = "t2.small"
+  default     = "t2.small"
 }
 
 variable "ssh_key_name" {
@@ -22,34 +22,34 @@ variable "ssh_key_name" {
 
 variable "target_group_arns" {
   description = "The target groups from the load balancer to attach the new instances to"
-  type = "list"
-  default = []
+  type        = "list"
+  default     = []
 }
 
 variable "security_groups" {
   description = "The security groups to attach to the ASG instances"
-  type = "list"
-  default = []
+  type        = "list"
+  default     = []
 }
 
 variable "max_size" {
   description = "The number of instances to put into the cluster"
-  default = 1
+  default     = 1
 }
 
 variable "min_size" {
   description = "The number of instances to put into the cluster"
-  default = 1
+  default     = 1
 }
 
 variable "desired_capacity" {
   description = "The number of instances to put into the cluster"
-  default = 1
+  default     = 1
 }
 
 variable "wait_for_capacity_timeout" {
   description = "How long to wait before timing out introducing the new ASG instances"
-  default = 0
+  default     = 0
 }
 
 variable "recurrence_start" {
@@ -86,13 +86,13 @@ variable "desired_capacity_stop" {
 
 variable "iam_instance_profile" {
   description = "The IAM profile to attach to new instances"
-  default = ""
+  default     = ""
 }
 
 variable "subnet_ids" {
   description = "The subnets to launch the instances into"
-  type = "list"
-  default = []
+  type        = "list"
+  default     = []
 }
 
 variable "tags" {

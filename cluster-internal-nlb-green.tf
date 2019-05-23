@@ -7,18 +7,18 @@ module "green_cluster_internal_nlb" {
   subnets = "${var.internal_nlb_subnet_ids}"
 
   cluster_name = "${var.cluster_name}"
-  color = "green"
+  color        = "green"
 
   load_balancer_is_internal = true
 
   log_bucket_name = "${aws_s3_bucket.log_bucket.id}"
 
-  product         = "${var.product}"
-  product_family  = "${var.product_family}"
-  role            = "${var.role} INTERNAL GREEN"
-  cost_code       = "${var.cost_code}"
-  owner           = "${var.owner}"
-  version_tag     = "${var.green_version_tag}"
+  product        = "${var.product}"
+  product_family = "${var.product_family}"
+  role           = "${var.role} INTERNAL GREEN"
+  cost_code      = "${var.cost_code}"
+  owner          = "${var.owner}"
+  version_tag    = "${var.green_version_tag}"
 
   https_listeners_count = "${var.green_nlb_https_listeners_count}"
   https_listeners       = "${var.green_nlb_https_listeners}"
@@ -30,7 +30,7 @@ module "green_cluster_internal_nlb" {
   target_groups       = "${var.green_internal_nlb_target_groups}"
 
   route53_aliases_name = ["${var.cluster_name}-internal-nlb-green"]
-  route53_zone_id = "${var.internal_nlb_route53_zone_id}"
+  route53_zone_id      = "${var.internal_nlb_route53_zone_id}"
 }
 
 resource "aws_route53_record" "green_cluster_internal_nlb" {

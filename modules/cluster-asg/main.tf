@@ -74,4 +74,3 @@ resource "aws_autoscaling_schedule" "cluster_asg_stop" {
   recurrence             = "${var.recurrence_stop}"
   autoscaling_group_name = "${module.cluster_asg.this_autoscaling_group_id}"
 }
-

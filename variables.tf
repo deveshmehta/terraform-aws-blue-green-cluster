@@ -9,26 +9,26 @@ variable "ssh_key_name" {
 
 variable "iam_policies" {
   description = "The IAM policies to attach to the IAM role for the cluster instances"
-  default = []
-  type = "list"
+  default     = []
+  type        = "list"
 }
 
 variable "internal_nlb_enabled" {
   description = "Whether to create an NLB or not"
-  default = false
+  default     = false
 }
 
 variable "external_nlb_enabled" {
   description = "Whether to create an NLB or not"
-  default = false
+  default     = false
 }
 
 variable "external_alb_enabled" {
   description = "Whether to create an external ALB or not"
-  default = true
+  default     = true
 }
 
 variable "internal_alb_enabled" {
   description = "Whether to create an internal ALB or not"
-  default = true
+  default     = true
 }

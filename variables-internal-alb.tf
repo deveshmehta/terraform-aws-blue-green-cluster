@@ -1,18 +1,17 @@
 variable "internal_alb_subnet_ids" {
   description = "An list of subnet ID to attach the ELB to which are within the specified VPC"
-  default = ""
+  default     = ""
 }
 
 variable "internal_alb_route53_zone_id" {
   description = "The route 53 zone ID to use for the ALB DNS entries"
-  default = ""
+  default     = ""
 }
-
 
 variable "internal_alb_security_groups" {
   description = "Attach security groups directly to the ALB by their ID"
-  type = "list"
-  default = []
+  type        = "list"
+  default     = []
 }
 
 variable "internal_alb_computed_ingress_with_source_security_group_id" {

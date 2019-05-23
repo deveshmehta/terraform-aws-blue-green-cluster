@@ -44,40 +44,39 @@ variable "subnets" {
   description = "Subnets to make the NLB available within"
 }
 
-
 variable "http_tcp_listeners" {
   description = "Definition of HTTP/TCP listeners"
-  default = []
+  default     = []
 }
 
 variable "http_tcp_listeners_count" {
   description = "Number of HTTP/TCP listeners"
-  default = 0
+  default     = 0
 }
 
 variable "https_listeners_count" {
   description = "Number of HTTPS listeners"
-  default = 0
+  default     = 0
 }
 
 variable "https_listeners" {
   description = "Definition of HTTPS listeners"
-  default = []
+  default     = []
 }
 
 variable "target_groups_count" {
   description = "Number of HTTPS listeners"
-  default = 0
+  default     = 0
 }
 
 variable "target_groups" {
   description = "Definition of target groups"
-  default = []
+  default     = []
 }
 
 variable "load_balancer_is_internal" {
   description = "Whether the load balancer should be resolvable on the public subnet"
-  default = true
+  default     = true
 }
 
 variable "log_bucket_name" {
@@ -86,8 +85,8 @@ variable "log_bucket_name" {
 
 variable "route53_aliases_name" {
   description = "Route53 aliases"
-  type = "list"
-  default = []
+  type        = "list"
+  default     = []
 }
 
 variable "route53_zone_id" {
@@ -96,5 +95,5 @@ variable "route53_zone_id" {
 
 variable "enabled" {
   description = "Whether to provision an NLB or not"
-  default = false
+  default     = false
 }

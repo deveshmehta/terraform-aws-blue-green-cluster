@@ -7,18 +7,18 @@ module "blue_cluster_external_nlb" {
   subnets = "${var.external_nlb_subnet_ids}"
 
   cluster_name = "${var.cluster_name}"
-  color = "blue"
+  color        = "blue"
 
   load_balancer_is_internal = false
 
   log_bucket_name = "${aws_s3_bucket.log_bucket.id}"
 
-  product         = "${var.product}"
-  product_family  = "${var.product_family}"
-  role            = "${var.role} EXTERNAL BLUE"
-  cost_code       = "${var.cost_code}"
-  owner           = "${var.owner}"
-  version_tag     = "${var.blue_version_tag}"
+  product        = "${var.product}"
+  product_family = "${var.product_family}"
+  role           = "${var.role} EXTERNAL BLUE"
+  cost_code      = "${var.cost_code}"
+  owner          = "${var.owner}"
+  version_tag    = "${var.blue_version_tag}"
 
   https_listeners_count = "${var.blue_nlb_https_listeners_count}"
   https_listeners       = "${var.blue_nlb_https_listeners}"
@@ -30,7 +30,7 @@ module "blue_cluster_external_nlb" {
   target_groups       = "${var.blue_external_nlb_target_groups}"
 
   route53_aliases_name = ["${var.cluster_name}-external-nlb-blue"]
-  route53_zone_id = "${var.external_nlb_route53_zone_id}"
+  route53_zone_id      = "${var.external_nlb_route53_zone_id}"
 }
 
 resource "aws_route53_record" "blue_cluster_external_nlb" {

@@ -4,8 +4,8 @@ variable "green_image_id" {
 
 variable "green_application_ports" {
   description = "The ports the ALB should be able to connect to the green cluster on"
-  type = "list"
-  default = []
+  type        = "list"
+  default     = []
 }
 
 variable "green_version_tag" {
@@ -14,7 +14,7 @@ variable "green_version_tag" {
 
 variable "green_instance_type" {
   description = "The instance type to use for the green cluster"
-  default = "t2.small"
+  default     = "t2.small"
 }
 
 variable "green_weight" {
@@ -23,22 +23,22 @@ variable "green_weight" {
 
 variable "green_max_size" {
   description = "The number of instances to put into the green cluster"
-  default = 1
+  default     = 1
 }
 
 variable "green_min_size" {
   description = "The number of instances to put into the green cluster"
-  default = 1
+  default     = 1
 }
 
 variable "green_desired_capacity" {
   description = "The number of instances to put into the green cluster"
-  default = 1
+  default     = 1
 }
 
 variable "green_wait_for_capacity_timeout" {
   description = "How long to wait before timing out introducing the new green ASG instances"
-  default = 0
+  default     = 0
 }
 
 variable "green_recurrence_start" {
@@ -81,100 +81,99 @@ variable "green_route53_aliases_name" {
 
 variable "green_target_groups_count" {
   description = "The number of target groups to attach to the green ALB"
-  default = 0
+  default     = 0
 }
 
 variable "green_target_groups" {
   description = "The target groups to attach to the green ALB"
-  type = "list"
-  default = []
+  type        = "list"
+  default     = []
 }
 
 variable "green_alb_https_listeners_count" {
   description = "The number of HTTPS listeners to attach the green ALB"
-  default = 0
+  default     = 0
 }
 
 variable "green_alb_https_listeners" {
   description = "The listeners to attach to the green ALB"
-  type = "list"
-  default = []
+  type        = "list"
+  default     = []
 }
 
 variable "green_alb_http_tcp_listeners_count" {
   description = "The number of HTTP/TCP listeners to attach the green ALB"
-  default = 0
+  default     = 0
 }
 
 variable "green_alb_http_tcp_listeners" {
   description = "The HTTP/TCP listeners to attach to the green ALB"
-  type = "list"
-  default = []
+  type        = "list"
+  default     = []
 }
 
 variable "green_internal_alb_target_groups_count" {
   description = "The number of target groups to attach to the green ALB"
-  default = 0
+  default     = 0
 }
 
 variable "green_internal_alb_target_groups" {
   description = "The target groups to attach to the green ALB"
-  type = "list"
-  default = []
+  type        = "list"
+  default     = []
 }
 
 variable "green_external_alb_target_groups_count" {
   description = "The number of target groups to attach to the green ALB"
-  default = 0
+  default     = 0
 }
 
 variable "green_external_alb_target_groups" {
   description = "The target groups to attach to the green ALB"
-  type = "list"
-  default = []
+  type        = "list"
+  default     = []
 }
 
 variable "green_nlb_https_listeners_count" {
   description = "The number of HTTPS listeners to attach the green NLB"
-  default = 0
+  default     = 0
 }
 
 variable "green_nlb_https_listeners" {
   description = "The listeners to attach to the green NLB"
-  type = "list"
-  default = []
+  type        = "list"
+  default     = []
 }
 
 variable "green_nlb_http_tcp_listeners_count" {
   description = "The number of HTTP/TCP listeners to attach the green NLB"
-  default = 0
+  default     = 0
 }
 
 variable "green_nlb_http_tcp_listeners" {
   description = "The HTTP/TCP listeners to attach to the green NLB"
-  type = "list"
-  default = []
+  type        = "list"
+  default     = []
 }
 
 variable "green_internal_nlb_target_groups_count" {
   description = "The number of target groups to attach to the green NLB"
-  default = 0
+  default     = 0
 }
 
 variable "green_internal_nlb_target_groups" {
   description = "The target groups to attach to the green NLB"
-  type = "list"
-  default = []
+  type        = "list"
+  default     = []
 }
 
 variable "green_external_nlb_target_groups_count" {
   description = "The number of target groups to attach to the green NLB"
-  default = 0
+  default     = 0
 }
 
 variable "green_external_nlb_target_groups" {
   description = "The target groups to attach to the green NLB"
-  type = "list"
-  default = []
+  type        = "list"
+  default     = []
 }
-

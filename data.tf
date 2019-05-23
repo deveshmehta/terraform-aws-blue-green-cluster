@@ -15,7 +15,7 @@ data "aws_iam_policy_document" "cluster_alb_log_bucket_policy" {
       "arn:aws:s3:::${var.cluster_name}-logs/${var.cluster_name}-blue-external-alb-logs/AWSLogs/${data.aws_caller_identity.current.account_id}/*",
       "arn:aws:s3:::${var.cluster_name}-logs/${var.cluster_name}-green-external-alb-logs/AWSLogs/${data.aws_caller_identity.current.account_id}/*",
       "arn:aws:s3:::${var.cluster_name}-logs/${var.cluster_name}-blue-external-nlb-logs/AWSLogs/${data.aws_caller_identity.current.account_id}/*",
-      "arn:aws:s3:::${var.cluster_name}-logs/${var.cluster_name}-green-external-nlb-logs/AWSLogs/${data.aws_caller_identity.current.account_id}/*"
+      "arn:aws:s3:::${var.cluster_name}-logs/${var.cluster_name}-green-external-nlb-logs/AWSLogs/${data.aws_caller_identity.current.account_id}/*",
     ]
 
     principals {
