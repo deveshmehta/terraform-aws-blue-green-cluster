@@ -54,34 +54,42 @@ variable "wait_for_capacity_timeout" {
 
 variable "recurrence_start" {
   description = "When to start the instances"
+  default = "false"
 }
 
 variable "recurrence_stop" {
   description = "When to stop the instances"
+  default = "false"
 }
 
 variable "min_size_start" {
   description = "How many instances to start when the ASG start hook is triggered"
+  default = 1
 }
 
 variable "max_size_start" {
   description = "How many instances to start when the ASG start hook is triggered"
+  default = 1
 }
 
 variable "desired_capacity_start" {
   description = "How many instances to start when the ASG start hook is triggered"
+  default = 1
 }
 
 variable "min_size_stop" {
   description = "How many instances to stop when the ASG stop hook is triggered"
+  default = 0
 }
 
 variable "max_size_stop" {
   description = "How many instances to stop when the ASG stop hook is triggered"
+  default = 0
 }
 
 variable "desired_capacity_stop" {
   description = "How many instances to stop when the ASG stop hook is triggered"
+  default = 0
 }
 
 variable "iam_instance_profile" {

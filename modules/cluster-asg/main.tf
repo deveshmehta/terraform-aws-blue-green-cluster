@@ -58,6 +58,8 @@ EOF
 # Options App ASG Schedule Resource Primary
 ##################################################################################
 resource "aws_autoscaling_schedule" "cluster_asg_start" {
+  count = "${var.recurrence_start != "false" ? 1 : 0}"
+
   scheduled_action_name  = "${var.cluster_name}-${var.color}-asg-start"
   min_size               = "${var.min_size_start}"
   max_size               = "${var.max_size_start}"
@@ -67,6 +69,8 @@ resource "aws_autoscaling_schedule" "cluster_asg_start" {
 }
 
 resource "aws_autoscaling_schedule" "cluster_asg_stop" {
+  count = "${var.recurrence_stop != "false" ? 1 : 0}"
+
   scheduled_action_name  = "${var.cluster_name}-${var.color}-asg-stop"
   min_size               = "${var.min_size_stop}"
   max_size               = "${var.max_size_stop}"

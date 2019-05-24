@@ -43,10 +43,12 @@ variable "blue_wait_for_capacity_timeout" {
 
 variable "blue_recurrence_start" {
   description = "When to start the instances"
+  default = "false"
 }
 
 variable "blue_recurrence_stop" {
   description = "When to stop the instances"
+  default = "false"
 }
 
 variable "blue_min_size_start" {
