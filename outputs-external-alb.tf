@@ -3,11 +3,11 @@
 #####
 
 output "external_alb_weighted_fqdn" {
-  value = "${element(coalescelist(aws_route53_record.blue_cluster_external_alb.*.fqdn, aws_route53_record.green_cluster_external_alb.*.fqdn), 0)}"
+  value = "${element(coalescelist(aws_route53_record.blue_cluster_external_alb.*.fqdn, aws_route53_record.green_cluster_external_alb.*.fqdn, list("")), 0)}"
 }
 
 output "external_alb_weighted_dns_name" {
-  value = "${element(coalescelist(aws_route53_record.blue_cluster_external_alb.*.name, aws_route53_record.green_cluster_external_alb.*.name), 0)}"
+  value = "${element(coalescelist(aws_route53_record.blue_cluster_external_alb.*.name, aws_route53_record.green_cluster_external_alb.*.name, list("")), 0)}"
 }
 
 ########

@@ -17,11 +17,11 @@ module "blue_cluster_asg" {
   ]
 
   target_group_arns = [
-    "${element(concat(module.blue_cluster_internal_alb.target_group_arns, module.blue_cluster_internal_nlb.target_group_arns), 0)}",
-    "${element(concat(module.blue_cluster_external_alb.target_group_arns, module.blue_cluster_external_nlb.target_group_arns), 0)}"
+    "${element(concat(module.blue_cluster_internal_alb.target_group_arns, module.blue_cluster_internal_nlb.target_group_arns, list("")), 0)}",
+    "${element(concat(module.blue_cluster_external_alb.target_group_arns, module.blue_cluster_external_nlb.target_group_arns, list("")), 0)}"
   ]
 
-  iam_instance_profile = "${module.cluster_iam.profile_name}"
+  iam_instance_profile = "${aws_iam_instance_profile.instance_profile.arn}"
 
   # Auto scaling group
   subnet_ids = "${var.instance_subnet_ids}"
