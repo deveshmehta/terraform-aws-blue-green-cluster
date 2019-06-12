@@ -38,7 +38,7 @@ resource "aws_route53_record" "blue_cluster_internal_nlb" {
 
   name = "${var.cluster_name}-internal-nlb"
 
-  zone_id = "${var.internal_alb_route53_zone_id}"
+  zone_id = "${var.internal_nlb_route53_zone_id}"
   type    = "CNAME"
   ttl     = "5"
 
