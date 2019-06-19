@@ -147,3 +147,13 @@ variable "enabled" {
   description = "Whether to provision an ALB or not"
   default     = true
 }
+
+variable "application_ports" {
+  description = "The ports that the application listens on.  Used to automate egress rules on the ALB"
+  type = "list"
+  default = []
+}
+
+variable "application_security_group_id" {
+  description = "The securtiy group attached the application ASG instances. Used to automate egress rules on the ALB"
+}

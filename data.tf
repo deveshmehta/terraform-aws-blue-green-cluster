@@ -24,3 +24,19 @@ data "aws_iam_policy_document" "cluster_alb_log_bucket_policy" {
     }
   }
 }
+
+data "aws_security_group" "cloudwatch_vpc_endpoint_sg" {
+  name = "${terraform.workspace}-cloudwatch-logs-endpoint-sg"
+}
+
+data "aws_security_group" "squid_proxy_sg" {
+  filter {
+    name = "tag:Name"
+    values = ["*-squid-proxy-sg"]
+  }
+
+  filter {
+    name = "tag:Workspace"
+    values = ["${terraform.workspace}"]
+  }
+}

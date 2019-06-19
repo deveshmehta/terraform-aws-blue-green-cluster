@@ -7,7 +7,9 @@ module "cluster_sg" {
   name         = "${var.cluster_name}-sg"
   description  = "${var.cluster_name} Security Group"
   vpc_id       = "${var.vpc_id}"
-  egress_rules = ["all-all"]
+  # egress_rules = ["all-all"]
+  egress_cidr_blocks = []
+  egress_ipv6_cidr_blocks = []
 
   number_of_computed_ingress_with_source_security_group_id = "${var.instance_number_of_computed_ingress_with_source_security_group_id}"
   computed_ingress_with_source_security_group_id           = "${var.instance_computed_ingress_with_source_security_group_id}"
@@ -85,3 +87,27 @@ resource "aws_security_group_rule" "cluster_sg_ingress_from_green_external_alb" 
   source_security_group_id = "${module.green_cluster_external_alb.security_group_id}"
   depends_on               = ["module.green_cluster_external_alb"]
 }
+
+resource "aws_security_group_rule" "cluster_sg_egress_to_cloudwatch_vpc_endpoint" {
+  type                     = "egress"
+  from_port                = 443
+  to_port                  = 443
+  protocol                 = "tcp"
+  description              = "${var.cluster_name} Cloudwatch Logs VPC Endpoint"
+  security_group_id        = "${module.cluster_sg.this_security_group_id}"
+  source_security_group_id = "${data.aws_security_group.cloudwatch_vpc_endpoint_sg.id}"
+  depends_on               = ["module.cluster_sg"]
+}
+
+
+resource "aws_security_group_rule" "cluster_sg_egress_to_squid_proxy" {
+  type                     = "egress"
+  from_port                = 443
+  to_port                  = 443
+  protocol                 = "tcp"
+  description              = "${var.cluster_name} Squid Proxy"
+  security_group_id        = "${module.cluster_sg.this_security_group_id}"
+  source_security_group_id = "${data.aws_security_group.squid_proxy_sg.id}"
+  depends_on               = ["module.cluster_sg"]
+}
+

@@ -8,7 +8,9 @@ module "cluster_alb_sg" {
   description = "${var.cluster_name} ${var.color} ALB Security Group"
   vpc_id      = "${var.vpc_id}"
 
-  egress_rules = ["all-all"]
+  # egress_rules = ["all-all"]
+  egress_cidr_blocks = []
+  egress_ipv6_cidr_blocks = []
 
   create = "${var.enabled}" # sg module uses `create` not `enabled` variable
 
@@ -35,6 +37,20 @@ module "cluster_alb_sg" {
     Terraform        = "True"
     Persistence      = "false"
   }
+}
+
+## Add Egress rules to the ALB
+resource "aws_security_group_rule" "cluster_alb_egress_to_application" {
+  count = "${var.enabled ? length(var.application_ports) : 0}"
+
+  type                     = "egress"
+  from_port                = "${element(var.application_ports, count.index)}"
+  to_port                  = "${element(var.application_ports, count.index)}"
+  protocol                 = "tcp"
+  description              = "${var.cluster_name} Application Egress"
+  security_group_id        = "${module.cluster_alb_sg.this_security_group_id}"
+  source_security_group_id = "${var.application_security_group_id}"
+  depends_on               = ["module.cluster_alb_sg"]
 }
 
 ##################################################################################
