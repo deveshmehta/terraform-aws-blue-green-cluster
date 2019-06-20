@@ -1,3 +1,7 @@
+data "aws_vpc" "vpc" {
+  id = "${var.vpc_id}"
+}
+
 data "aws_caller_identity" "current" {}
 
 data "aws_elb_service_account" "main" {}
@@ -26,7 +30,7 @@ data "aws_iam_policy_document" "cluster_alb_log_bucket_policy" {
 }
 
 data "aws_security_group" "cloudwatch_vpc_endpoint_sg" {
-  name = "${terraform.workspace}-cloudwatch-logs-endpoint-sg"
+  name = "${data.aws_vpc.vpc.tags["Name"]}-cloudwatch-logs-endpoint-sg"
 }
 
 data "aws_security_group" "squid_proxy_sg" {
@@ -37,6 +41,6 @@ data "aws_security_group" "squid_proxy_sg" {
 
   filter {
     name = "tag:Workspace"
-    values = ["${terraform.workspace}"]
+    values = ["${data.aws_vpc.vpc.tags["Name"]}"]
   }
 }
