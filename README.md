@@ -39,6 +39,18 @@ It will build the following artifacts:
 * Basic IAM Roles for cluster instances
 
 
+### Implementation
+
+Please see the following projects for implementation examples:
+
+### Using ALB
+* https://gitlab.nonprod.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-nodejs-webapp-blue-green
+* https://gitlab.nonprod.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-nginx-proxy-blue-green
+
+### Using NLB
+* https://gitlab.nonprod.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-squid-proxy-blue-green
+
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
