@@ -2,7 +2,7 @@
 # Options SECURITY GROUPS
 ##################################################################################
 module "cluster_sg" {
-  source = "git::https://gitlab.nonprod.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-security-group.git"
+  source = "git::https://gitlab.awscmg-dev.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-security-group.git"
 
   name         = "${var.cluster_name}-sg"
   description  = "${var.cluster_name} Security Group"

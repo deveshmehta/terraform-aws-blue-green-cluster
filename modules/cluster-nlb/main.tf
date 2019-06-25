@@ -2,7 +2,7 @@
 # NLB
 ##################################################################################
 module "cluster_nlb" {
-  source = "git::https://gitlab.nonprod.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-alb.git?ref=feature/nlb-support-with-enabled-option"
+  source = "git::https://gitlab.awscmg-dev.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-alb.git?ref=feature/nlb-support-with-enabled-option"
 
   # source = "../../../cmg-terraform-aws-alb"
 
@@ -44,7 +44,7 @@ module "cluster_nlb" {
 module "cluster_nlb_route53_aliases" {
   enabled = "${var.enabled ? "true" : "false"}"
 
-  source          = "git::https://gitlab.nonprod.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-route53-alias.git"
+  source          = "git::https://gitlab.awscmg-dev.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-route53-alias.git"
   aliases         = "${var.route53_aliases_name}"
   parent_zone_id  = "${var.route53_zone_id}"
   target_dns_name = "${module.cluster_nlb.dns_name}"
