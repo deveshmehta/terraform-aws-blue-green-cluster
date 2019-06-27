@@ -43,6 +43,7 @@ EOF
   tags_as_map = {
     Environment      = "${terraform.workspace}"
     Workspace        = "${terraform.workspace}"
+    Application      = "${var.product}"
     Product          = "${var.product}"
     "Product Family" = "${var.product_family}"
     Costcode         = "${var.cost_code}"
