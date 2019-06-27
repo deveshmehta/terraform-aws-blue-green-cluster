@@ -18,6 +18,7 @@ module "cluster_nlb" {
   tags = "${map(
     "Environment", "${terraform.workspace}",
     "Workspace", "${terraform.workspace}",
+    "Application", "${var.product}"
     "Product", "${var.product}",
     "Product Family", "${var.product_family}",
     "Role", "${var.role}",

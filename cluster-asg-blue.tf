@@ -41,7 +41,7 @@ module "blue_cluster_asg" {
   desired_capacity_stop = "${var.blue_desired_capacity_stop}"
   recurrence_stop       = "${var.blue_recurrence_stop}"
 
-  product        = "${var.product}"
+  product        = "${var.product}"   
   product_family = "${var.product_family}"
   role           = "${var.role} BLUE"
   cost_code      = "${var.cost_code}"

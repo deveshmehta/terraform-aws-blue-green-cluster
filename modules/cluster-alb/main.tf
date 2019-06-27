@@ -29,6 +29,7 @@ module "cluster_alb_sg" {
   tags = {
     Environment      = "${terraform.workspace}"
     Workspace        = "${terraform.workspace}"
+    Application      = "${var.product}"
     Product          = "${var.product}"
     "Product Family" = "${var.product_family}"
     Costcode         = "${var.cost_code}"
@@ -80,6 +81,7 @@ module "cluster_alb" {
   tags = "${map(
     "Environment", "${terraform.workspace}",
     "Workspace", "${terraform.workspace}",
+    "Application", "${var.product}",
     "Product", "${var.product}",
     "Product Family", "${var.product_family}",
     "Role", "${var.role}",

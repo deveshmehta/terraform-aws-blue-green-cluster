@@ -9,6 +9,7 @@ resource "aws_s3_bucket" "log_bucket" {
   tags = "${map(
     "Environment", "${terraform.workspace}",
     "Workspace", "${terraform.workspace}",
+    "Application", "${var.product}",
     "Product", "${var.product}",
     "Product Family", "${var.product_family}",
     "Costcode", "${var.cost_code}",
