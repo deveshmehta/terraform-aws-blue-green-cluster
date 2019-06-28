@@ -99,16 +99,3 @@ resource "aws_security_group_rule" "cluster_sg_egress_to_cloudwatch_vpc_endpoint
   source_security_group_id = "${data.aws_security_group.cloudwatch_vpc_endpoint_sg.id}"
   depends_on               = ["module.cluster_sg"]
 }
-
-
-resource "aws_security_group_rule" "cluster_sg_egress_to_squid_proxy" {
-  type                     = "egress"
-  from_port                = 443
-  to_port                  = 443
-  protocol                 = "tcp"
-  description              = "${var.cluster_name} Squid Proxy"
-  security_group_id        = "${module.cluster_sg.this_security_group_id}"
-  source_security_group_id = "${data.aws_security_group.squid_proxy_sg.id}"
-  depends_on               = ["module.cluster_sg"]
-}
-

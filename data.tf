@@ -33,14 +33,14 @@ data "aws_security_group" "cloudwatch_vpc_endpoint_sg" {
   name = "${data.aws_vpc.vpc.tags["Name"]}-cloudwatch-logs-endpoint-sg"
 }
 
-data "aws_security_group" "squid_proxy_sg" {
-  filter {
-    name = "tag:Name"
-    values = ["*-squid-proxy-sg"]
-  }
+# data "aws_security_group" "squid_proxy_sg" {
+#   filter {
+#     name = "tag:Name"
+#     values = ["*-squid-proxy-sg"]
+#   }
 
-  filter {
-    name = "tag:Workspace"
-    values = ["${data.aws_vpc.vpc.tags["Name"]}"]
-  }
-}
+#   filter {
+#     name = "tag:Workspace"
+#     values = ["${data.aws_vpc.vpc.tags["Name"]}"]
+#   }
+# }
