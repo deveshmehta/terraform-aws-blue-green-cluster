@@ -27,6 +27,37 @@ data "aws_iam_policy_document" "cluster_alb_log_bucket_policy" {
       identifiers = ["${data.aws_elb_service_account.main.arn}"]
     }
   }
+
+  statement {
+    sid    = "AWSLogDeliveryWrite"
+    actions = ["s3:PutObject"]
+
+    resources = [
+      "arn:aws:s3:::${var.cluster_name}-logs/${var.cluster_name}-blue-internal-nlb-logs/AWSLogs/${data.aws_caller_identity.current.account_id}/*",
+      "arn:aws:s3:::${var.cluster_name}-logs/${var.cluster_name}-green-internal-nlb-logs/AWSLogs/${data.aws_caller_identity.current.account_id}/*",
+      "arn:aws:s3:::${var.cluster_name}-logs/${var.cluster_name}-blue-external-nlb-logs/AWSLogs/${data.aws_caller_identity.current.account_id}/*",
+      "arn:aws:s3:::${var.cluster_name}-logs/${var.cluster_name}-grene-external-nlb-logs/AWSLogs/${data.aws_caller_identity.current.account_id}/*",
+    ]
+
+    principals {
+      type = "Service"
+      identifiers = ["delivery.logs.amazonaws.com"]
+    }
+  }
+
+  statement {
+    sid = "AWSLogDeliveryAclCheck"
+    actions = ["s3:GetBucketAcl"]
+
+    resources = [
+      "arn:aws:s3:::${var.cluster_name}-logs"
+    ]
+
+    principals {
+      type = "Service"
+      identifiers = ["delivery.logs.amazonaws.com"]
+    }
+  }
 }
 
 data "aws_security_group" "cloudwatch_vpc_endpoint_sg" {
