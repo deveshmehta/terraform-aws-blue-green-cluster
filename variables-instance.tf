@@ -57,3 +57,8 @@ variable "instance_number_of_computed_egress_with_cidr_blocks" {
   description = "The count of computed egress cidr blocks for the cluster instances"
   default     = 0
 }
+
+variable "user_data" {
+  description = "The user data to provide when launching the instance"
+  default     = " "
+}
