@@ -132,3 +132,8 @@ variable "product_family" {
 variable "owner" {
   description = "Product owner email address"
 }
+
+variable "user_data" {
+  description = "The user data to provide when launching the instance"
+  default     = " "
+}

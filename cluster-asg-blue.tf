@@ -10,6 +10,7 @@ module "blue_cluster_asg" {
   image_id      = "${var.blue_image_id}"
   instance_type = "${var.blue_instance_type}"
   ssh_key_name  = "${var.ssh_key_name}"
+  user_data	= "${var.user_data}"
 
   security_groups = [
     "${module.cluster_sg.this_security_group_id}",

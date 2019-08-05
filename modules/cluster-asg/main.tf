@@ -25,6 +25,7 @@ EOF
   image_id      = "${var.image_id}"
   instance_type = "${var.instance_type}"
   key_name      = "${var.ssh_key_name}"
+  user_data     = "${var.user_data}"
 
   security_groups              = ["${var.security_groups}"]
   target_group_arns            = ["${compact(flatten(var.target_group_arns))}"] # in case any blanks...
