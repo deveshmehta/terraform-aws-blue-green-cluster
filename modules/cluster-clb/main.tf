@@ -53,7 +53,7 @@ resource "aws_security_group_rule" "cluster_clb_egress_to_application" {
   source_security_group_id = "${var.application_security_group_id}"
   depends_on               = ["module.cluster_clb_sg"]
 }
-}
+
 
 
 ##################################################################################
