@@ -92,6 +92,18 @@ variable "green_target_groups" {
   default     = []
 }
 
+variable "green_clb_listeners" {
+  description = "The listeners to attach to the green CLB"
+  type        = "list"
+  default     = []
+}
+
+variable "green_clb_health_check" {
+  description = "The health check map of green CLB."
+  type        = "map"
+  default     = {}
+}
+
 variable "green_alb_https_listeners_count" {
   description = "The number of HTTPS listeners to attach the green ALB"
   default     = 0

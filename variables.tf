@@ -32,3 +32,13 @@ variable "internal_alb_enabled" {
   description = "Whether to create an internal ALB or not"
   default     = true
 }
+
+variable "external_clb_enabled" {
+  description = "Whether to create an external CLB or not"
+  default     = false
+}
+
+variable "internal_clb_enabled" {
+  description = "Whether to create an internal CLB or not"
+  default     = false
+}
