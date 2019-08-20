@@ -1,11 +1,11 @@
 ##################################################################################
 # ALB SECURITY GROUPS
 ##################################################################################
-module "cluster_alb_sg" {
+module "cluster_clb_sg" {
   source = "git::https://gitlab.awscmg-dev.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-security-group.git"
 
-  name        = "${var.cluster_name}-${var.color}-${var.load_balancer_is_internal ? "internal" : "external"}-alb-sg"
-  description = "${var.cluster_name} ${var.color} ALB Security Group"
+  name        = "${var.cluster_name}-${var.color}-${var.load_balancer_is_internal ? "internal" : "external"}-clb-sg"
+  description = "${var.cluster_name} ${var.color} CLB Security Group"
   vpc_id      = "${var.vpc_id}"
 
   # egress_rules = ["all-all"]
@@ -40,8 +40,8 @@ module "cluster_alb_sg" {
   }
 }
 
-## Add Egress rules to the ALB
-resource "aws_security_group_rule" "cluster_alb_egress_to_application" {
+## Add Egress rules to the CLB
+resource "aws_security_group_rule" "cluster_clb_egress_to_application" {
   count = "${var.enabled ? length(var.application_ports) : 0}"
 
   type                     = "egress"
@@ -49,9 +49,9 @@ resource "aws_security_group_rule" "cluster_alb_egress_to_application" {
   to_port                  = "${element(var.application_ports, count.index)}"
   protocol                 = "tcp"
   description              = "${var.cluster_name} Application Egress"
-  security_group_id        = "${module.cluster_alb_sg.this_security_group_id}"
+  security_group_id        = "${module.cluster_clb_sg.this_security_group_id}"
   source_security_group_id = "${var.application_security_group_id}"
-  depends_on               = ["module.cluster_alb_sg"]
+  depends_on               = ["module.cluster_clb_sg"]
 }
 }
 
@@ -66,7 +66,7 @@ module "cluster_clb" {
   load_balancer_name        = "${var.cluster_name}-${var.color}-${var.load_balancer_is_internal ? "int" : "ext"}-clb"
   load_balancer_is_internal = "${var.load_balancer_is_internal}"
   security_groups = [
-    "${module.cluster_alb_sg.this_security_group_id}",
+    "${module.cluster_clb_sg.this_security_group_id}",
     "${var.security_groups}",
   ]
   enable_cross_zone_load_balancing = true
