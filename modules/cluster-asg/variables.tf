@@ -26,6 +26,12 @@ variable "target_group_arns" {
   default     = []
 }
 
+variable "load_balancer_arns" {
+  description = "The target groups from the load balancer to attach the new instances to"
+  type        = "list"
+  default     = []
+}
+
 variable "security_groups" {
   description = "The security groups to attach to the ASG instances"
   type        = "list"
