@@ -32,6 +32,8 @@ EOF
   iam_instance_profile         = "${var.iam_instance_profile}"
   recreate_asg_when_lc_changes = true
 
+  load_balancers = ["${var.load_balancers}"]
+
   # Auto scaling group
   asg_name                  = "${var.cluster_name}-${var.color}-asg"
   vpc_zone_identifier       = "${var.subnet_ids}"

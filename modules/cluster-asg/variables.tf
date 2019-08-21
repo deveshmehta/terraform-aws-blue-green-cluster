@@ -32,6 +32,12 @@ variable "security_groups" {
   default     = []
 }
 
+variable "load_balancers" {
+  description = "The security groups to attach to the ASG instances"
+  type        = "list"
+  default     = []
+}
+
 variable "max_size" {
   description = "The number of instances to put into the cluster"
   default     = 1
