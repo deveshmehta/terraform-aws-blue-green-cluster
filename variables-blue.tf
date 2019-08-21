@@ -138,8 +138,9 @@ variable "blue_clb_listeners" {
 
 variable "blue_clb_health_check" {
   description = "The health check map of blue CLB."
-  type        = "map"
-  default     = {}
+
+  #type        = "map"
+  #default     = {}
 }
 
 variable "blue_nlb_https_listeners" {
