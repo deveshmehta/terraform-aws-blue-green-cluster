@@ -100,9 +100,8 @@ variable "green_clb_listeners" {
 
 variable "green_clb_health_check" {
   description = "The health check map of green CLB."
-
-  #type        = "map"
-  #default     = {}
+  type        = "map"
+  default     = {}
 }
 
 variable "green_alb_https_listeners_count" {
