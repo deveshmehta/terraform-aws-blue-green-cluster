@@ -27,6 +27,9 @@ module "green_cluster_external_clb" {
 
   log_bucket_name = "${aws_s3_bucket.log_bucket.id}"
 
+  application_ports             = "${var.green_application_ports}"
+  application_security_group_id = "${module.cluster_sg.this_security_group_id}"
+
   product        = "${var.product}"
   product_family = "${var.product_family}"
   role           = "${var.role} EXTERNAL GREEN"
