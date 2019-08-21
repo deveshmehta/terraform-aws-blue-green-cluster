@@ -51,6 +51,8 @@ variable "clb_listeners" {
 
 variable "clb_health_check" {
   description = "A maps containing key/value pairs that define health_check. Order of these maps is important and the index of these are to be referenced in listener definitions. Required key/values: name, backend_protocol, backend_port. Optional key/values are in the target_groups_defaults variable."
+  type        = "map"
+  default     = {}
 }
 
 variable "load_balancer_is_internal" {
