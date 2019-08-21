@@ -20,8 +20,8 @@ module "green_cluster_internal_clb" {
   owner          = "${var.owner}"
   version_tag    = "${var.green_version_tag}"
 
-  clb_listeners     = "${var.green_clb_listeners}"
-  clb_health_check  = "${var.green_clb_health_check}"
+  clb_listeners    = "${var.green_clb_listeners}"
+  clb_health_check = "${var.green_clb_health_check}"
 
   route53_aliases_name = ["${var.cluster_name}-internal-clb-green"]
   route53_zone_id      = "${var.internal_clb_route53_zone_id}"

@@ -10,7 +10,7 @@ module "green_cluster_external_clb" {
   color        = "green"
 
   security_groups = "${var.external_clb_security_groups}"
-  
+
   load_balancer_is_internal = false
 
   computed_ingress_with_source_security_group_id           = "${var.external_clb_computed_ingress_with_source_security_group_id}"
@@ -24,7 +24,7 @@ module "green_cluster_external_clb" {
 
   computed_egress_with_cidr_blocks           = "${var.external_clb_computed_egress_with_cidr_blocks}"
   number_of_computed_egress_with_cidr_blocks = "${var.external_clb_number_of_computed_egress_with_cidr_blocks}"
-  
+
   log_bucket_name = "${aws_s3_bucket.log_bucket.id}"
 
   product        = "${var.product}"
@@ -34,8 +34,8 @@ module "green_cluster_external_clb" {
   owner          = "${var.owner}"
   version_tag    = "${var.green_version_tag}"
 
-  clb_listeners     = "${var.green_clb_listeners}"
-  clb_health_check  = "${var.green_clb_health_check}"
+  clb_listeners    = "${var.green_clb_listeners}"
+  clb_health_check = "${var.green_clb_health_check}"
 
   route53_aliases_name = ["${var.cluster_name}-external-clb-green"]
   route53_zone_id      = "${var.external_clb_route53_zone_id}"

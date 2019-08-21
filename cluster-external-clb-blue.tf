@@ -10,7 +10,7 @@ module "blue_cluster_external_clb" {
   color        = "blue"
 
   security_groups = "${var.external_clb_security_groups}"
-  
+
   load_balancer_is_internal = false
 
   computed_ingress_with_source_security_group_id           = "${var.external_clb_computed_ingress_with_source_security_group_id}"
@@ -25,9 +25,9 @@ module "blue_cluster_external_clb" {
   computed_egress_with_cidr_blocks           = "${var.external_clb_computed_egress_with_cidr_blocks}"
   number_of_computed_egress_with_cidr_blocks = "${var.external_clb_number_of_computed_egress_with_cidr_blocks}"
 
-  application_ports = "${var.blue_application_ports}"
+  application_ports             = "${var.blue_application_ports}"
   application_security_group_id = "${module.cluster_sg.this_security_group_id}"
-  
+
   log_bucket_name = "${aws_s3_bucket.log_bucket.id}"
 
   product        = "${var.product}"
@@ -37,8 +37,8 @@ module "blue_cluster_external_clb" {
   owner          = "${var.owner}"
   version_tag    = "${var.blue_version_tag}"
 
-  clb_listeners     = "${var.blue_clb_listeners}"
-  clb_health_check  = "${var.blue_clb_health_check}"
+  clb_listeners    = "${var.blue_clb_listeners}"
+  clb_health_check = "${var.blue_clb_health_check}"
 
   route53_aliases_name = ["${var.cluster_name}-external-clb-blue"]
   route53_zone_id      = "${var.external_clb_route53_zone_id}"

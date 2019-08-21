@@ -9,7 +9,7 @@ module "cluster_clb_sg" {
   vpc_id      = "${var.vpc_id}"
 
   # egress_rules = ["all-all"]
-  egress_cidr_blocks = []
+  egress_cidr_blocks      = []
   egress_ipv6_cidr_blocks = []
 
   create = "${var.enabled}" # sg module uses `create` not `enabled` variable
@@ -54,25 +54,26 @@ resource "aws_security_group_rule" "cluster_clb_egress_to_application" {
   depends_on               = ["module.cluster_clb_sg"]
 }
 
-
-
 ##################################################################################
 # CLB
 ##################################################################################
 module "cluster_clb" {
   source = "git::https://gitlab.awscmg-dev.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-alb.git?ref=feature/clb-support"
 
-  clb_enabled = "${var.enabled}"
+  clb_enabled               = "${var.enabled}"
   load_balancer_name        = "${var.cluster_name}-${var.color}-${var.load_balancer_is_internal ? "int" : "ext"}-clb"
   load_balancer_is_internal = "${var.load_balancer_is_internal}"
+
   security_groups = [
     "${module.cluster_clb_sg.this_security_group_id}",
     "${var.security_groups}",
   ]
+
   enable_cross_zone_load_balancing = true
-  log_bucket_name     = "${var.log_bucket_name}"
-  log_location_prefix = "${var.cluster_name}-${var.color}-${var.load_balancer_is_internal ? "internal" : "external"}-clb-logs"
-  subnets             = "${split(",", var.subnets)}"
+  log_bucket_name                  = "${var.log_bucket_name}"
+  log_location_prefix              = "${var.cluster_name}-${var.color}-${var.load_balancer_is_internal ? "internal" : "external"}-clb-logs"
+  subnets                          = "${split(",", var.subnets)}"
+
   tags = "${map(
     "Environment", "${terraform.workspace}",
     "Workspace", "${terraform.workspace}",
@@ -87,9 +88,10 @@ module "cluster_clb" {
     "Terraform", "True",
     "Persistence", "false"
   )}"
-  vpc_id = "${var.vpc_id}"
-  clb_health_check    = "${var.clb_health_check}"
-  clb_listeners       = "${var.clb_listeners}"
+
+  vpc_id           = "${var.vpc_id}"
+  clb_health_check = "${var.clb_health_check}"
+  clb_listeners    = "${var.clb_listeners}"
 }
 
 ##################################################################################

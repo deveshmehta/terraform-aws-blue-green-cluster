@@ -43,12 +43,12 @@ variable "green_wait_for_capacity_timeout" {
 
 variable "green_recurrence_start" {
   description = "When to start the green instances"
-  default = "false"
+  default     = "false"
 }
 
 variable "green_recurrence_stop" {
   description = "When to stop the green instances"
-  default = "false"
+  default     = "false"
 }
 
 variable "green_min_size_start" {

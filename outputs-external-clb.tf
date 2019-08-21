@@ -30,7 +30,6 @@ output "blue_external_clb_load_balancer_zone_id" {
   value = "${module.blue_cluster_external_clb.load_balancer_zone_id}"
 }
 
-
 ########
 # GREEN
 ########

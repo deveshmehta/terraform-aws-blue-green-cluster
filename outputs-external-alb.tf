@@ -62,8 +62,6 @@ output "blue_external_alb_target_group_names" {
   value = "${module.blue_cluster_external_alb.target_group_names}"
 }
 
-
-
 ########
 # GREEN
 ########

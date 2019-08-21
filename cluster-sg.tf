@@ -4,11 +4,12 @@
 module "cluster_sg" {
   source = "git::https://gitlab.awscmg-dev.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-security-group.git"
 
-  name         = "${var.cluster_name}-sg"
-  description  = "${var.cluster_name} Security Group"
-  vpc_id       = "${var.vpc_id}"
+  name        = "${var.cluster_name}-sg"
+  description = "${var.cluster_name} Security Group"
+  vpc_id      = "${var.vpc_id}"
+
   # egress_rules = ["all-all"]
-  egress_cidr_blocks = []
+  egress_cidr_blocks      = []
   egress_ipv6_cidr_blocks = []
 
   number_of_computed_ingress_with_source_security_group_id = "${var.instance_number_of_computed_ingress_with_source_security_group_id}"
