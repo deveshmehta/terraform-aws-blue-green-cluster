@@ -92,7 +92,7 @@ module "cluster_clb" {
   vpc_id = "${var.vpc_id}"
 
   //clb_health_check = "${map(var.clb_health_check)}"
-  clb_health_check = ["${var.clb_health_check}"]
+  clb_health_check = "${var.clb_health_check}"
   clb_listeners    = "${var.clb_listeners}"
 }
 
