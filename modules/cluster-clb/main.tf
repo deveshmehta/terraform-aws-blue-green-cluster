@@ -99,7 +99,7 @@ module "cluster_clb" {
 ##################################################################################
 
 module "cluster_clb_route53_aliases" {
-  clb_enabled = "${var.enabled ? "true" : "false"}"
+  enabled = "${var.enabled ? "true" : "false"}"
 
   source          = "git::https://gitlab.awscmg-dev.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-route53-alias.git"
   aliases         = "${var.route53_aliases_name}"

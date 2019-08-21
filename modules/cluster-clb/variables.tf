@@ -126,3 +126,13 @@ variable "number_of_computed_egress_with_cidr_blocks" {
   description = "The count of computed egress cidr blocks for the loadbalancer"
   default     = 0
 }
+
+variable "application_security_group_id" {
+  description = "The securtiy group attached the application ASG instances. Used to automate egress rules on the ALB"
+}
+
+variable "application_ports" {
+  description = "The ports that the application listens on.  Used to automate egress rules on the ALB"
+  type        = "list"
+  default     = []
+}
