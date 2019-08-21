@@ -11,21 +11,6 @@ module "blue_cluster_internal_nlb" {
 
   load_balancer_is_internal = true
 
-  computed_ingress_with_source_security_group_id           = "${var.internal_clb_computed_ingress_with_source_security_group_id}"
-  number_of_computed_ingress_with_source_security_group_id = "${var.internal_clb_number_of_computed_ingress_with_source_security_group_id}"
-
-  computed_ingress_with_cidr_blocks           = "${var.internal_clb_computed_ingress_with_cidr_blocks}"
-  number_of_computed_ingress_with_cidr_blocks = "${var.internal_clb_number_of_computed_ingress_with_cidr_blocks}"
-
-  number_of_computed_egress_with_source_security_group_id = "${var.internal_clb_number_of_computed_egress_with_source_security_group_id}"
-  computed_egress_with_source_security_group_id           = "${var.internal_clb_computed_egress_with_source_security_group_id}"
-
-  computed_egress_with_cidr_blocks           = "${var.internal_clb_computed_egress_with_cidr_blocks}"
-  number_of_computed_egress_with_cidr_blocks = "${var.internal_clb_number_of_computed_egress_with_cidr_blocks}"
-
-  application_ports             = "${var.blue_application_ports}"
-  application_security_group_id = "${module.cluster_sg.this_security_group_id}"
-
   log_bucket_name = "${aws_s3_bucket.log_bucket.id}"
 
   product        = "${var.product}"
