@@ -27,10 +27,9 @@ EOF
   key_name      = "${var.ssh_key_name}"
   user_data     = "${var.user_data}"
 
-  security_groups   = ["${var.security_groups}"]
-  target_group_arns = ["${compact(flatten(var.target_group_arns))}"] # in case any blanks...
-
-  #load_balancer_arns           = ["${compact(flatten(var.load_balancer_arns))}"] # in case any blanks...
+  security_groups              = ["${var.security_groups}"]
+  target_group_arns            = ["${compact(flatten(var.target_group_arns))}"]  # in case any blanks...
+  load_balancer_arns           = ["${compact(flatten(var.load_balancer_arns))}"] # in case any blanks...
   iam_instance_profile         = "${var.iam_instance_profile}"
   recreate_asg_when_lc_changes = true
 
