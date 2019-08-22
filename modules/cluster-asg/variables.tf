@@ -26,7 +26,7 @@ variable "target_group_arns" {
   default     = []
 }
 
-variable "load_balancer_arns" {
+variable "clb_load_balancer_arns" {
   description = "The target groups from the load balancer to attach the new instances to"
   type        = "list"
   default     = []
