@@ -11,7 +11,7 @@ output "load_balancer_arn_suffix" {
 }
 
 output "load_balancer_arns" {
-  value = "${module.cluster_clb.load_balancer_arns}"
+  value = "${module.cluster_clb.clb_load_balancer_arns}"
 }
 
 output "load_balancer_id" {
