@@ -23,8 +23,8 @@ module "green_cluster_asg" {
   ]
 
   load_balancer_arns = [
-    "${element(concat(module.green_cluster_internal_clb.load_balancer_arns, module.green_cluster_internal_clb.load_balancer_arns, list("")), 0)}",
-    "${element(concat(module.green_cluster_external_clb.load_balancer_arns, module.green_cluster_external_clb.load_balancer_arns, list("")), 0)}",
+    "${element(concat(module.green_cluster_internal_clb.load_balancer_arns, list("")), 0)}",
+    "${element(concat(module.green_cluster_external_clb.load_balancer_arns, list("")), 0)}",
   ]
 
   iam_instance_profile = "${aws_iam_instance_profile.instance_profile.arn}"
