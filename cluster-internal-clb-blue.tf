@@ -9,6 +9,8 @@ module "blue_cluster_internal_clb" {
   cluster_name = "${var.cluster_name}"
   color        = "blue"
 
+  security_groups = "${var.internal_clb_security_groups}"
+
   load_balancer_is_internal = true
 
   computed_ingress_with_source_security_group_id           = "${var.internal_clb_computed_ingress_with_source_security_group_id}"
