@@ -62,7 +62,7 @@ module "cluster_clb" {
 
   clb_enabled               = "${var.enabled}"
   load_balancer_is_internal = "${var.load_balancer_is_internal}"
-  load_balancer_name        = "${var.cluster_name}-${var.color}-${var.load_balancer_is_internal ? "int" : "ext"}-clb-mayank"
+  load_balancer_name        = "${var.cluster_name}-${var.color}-${var.load_balancer_is_internal ? "int" : "ext"}-clb-m"
 
   security_groups = [
     "${module.cluster_clb_sg.this_security_group_id}",
@@ -71,7 +71,7 @@ module "cluster_clb" {
 
   enable_cross_zone_load_balancing = true
   log_bucket_name                  = "${var.log_bucket_name}"
-  log_location_prefix              = "${var.cluster_name}-${var.color}-${var.load_balancer_is_internal ? "internal" : "external"}-clb-logs-mayank"
+  log_location_prefix              = "${var.cluster_name}-${var.color}-${var.load_balancer_is_internal ? "internal" : "external"}-clb-logs-m"
   subnets                          = "${split(",", var.subnets)}"
 
   tags = "${map(
