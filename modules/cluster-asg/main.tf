@@ -2,7 +2,8 @@
 # Options ASG Resource Primary
 ##################################################################################
 module "cluster_asg" {
-  source = "git::https://gitlab.awscmg-dev.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-autoscaling.git?ref=feature/clb_support"
+  #source = "git::https://gitlab.awscmg-dev.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-autoscaling.git?ref=feature/clb_support"
+  source = "git::https://gitlab.awscmg-dev.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-autoscaling.git"
 
   name = "${var.cluster_name}-${var.color}-svc"
 
