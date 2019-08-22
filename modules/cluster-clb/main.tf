@@ -61,8 +61,8 @@ module "cluster_clb" {
   source = "git::https://gitlab.awscmg-dev.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-alb.git?ref=feature/clb-support"
 
   clb_enabled               = "${var.enabled}"
-  load_balancer_name        = "${var.cluster_name}-${var.color}-${var.load_balancer_is_internal ? "int" : "ext"}-clb"
   load_balancer_is_internal = "${var.load_balancer_is_internal}"
+  load_balancer_name        = "${var.cluster_name}-${var.color}-${var.load_balancer_is_internal ? "int" : "ext"}-clb"
 
   security_groups = [
     "${module.cluster_clb_sg.this_security_group_id}",
