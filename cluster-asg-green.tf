@@ -22,7 +22,7 @@ module "green_cluster_asg" {
     "${element(concat(module.green_cluster_external_alb.target_group_arns, module.green_cluster_external_nlb.target_group_arns, list("")), 0)}",
   ]
 
-  load_balancers_arns = [
+  load_balancer_arns = [
     "${element(concat(module.green_cluster_internal_clb.load_balancer_arns, module.green_cluster_internal_clb.load_balancer_arns, list("")), 0)}",
     "${element(concat(module.green_cluster_external_clb.load_balancer_arns, module.green_cluster_external_clb.load_balancer_arns, list("")), 0)}",
   ]
