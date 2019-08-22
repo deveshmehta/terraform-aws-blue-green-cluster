@@ -47,6 +47,7 @@ variable "subnets" {
 variable "clb_listeners" {
   description = "Definition of HTTP/HTTPS/TCP listeners"
   default     = []
+  type        = "list"
 }
 
 variable "clb_health_check" {
