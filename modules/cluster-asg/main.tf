@@ -33,7 +33,7 @@ EOF
   iam_instance_profile         = "${var.iam_instance_profile}"
   recreate_asg_when_lc_changes = true
 
-  #load_balancers = ["${var.load_balancers}"]
+  load_balancers = ["${var.load_balancers}"]
 
   # Auto scaling group
   asg_name                  = "${var.cluster_name}-${var.color}-asg"
@@ -43,6 +43,7 @@ EOF
   max_size                  = "${var.max_size}"
   desired_capacity          = "${var.desired_capacity}"
   wait_for_capacity_timeout = "${var.wait_for_capacity_timeout}"
+
   tags_as_map = {
     Environment      = "${terraform.workspace}"
     Workspace        = "${terraform.workspace}"
