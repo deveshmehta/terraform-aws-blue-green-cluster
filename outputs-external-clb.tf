@@ -30,6 +30,10 @@ output "blue_external_clb_load_balancer_zone_id" {
   value = "${module.blue_cluster_external_clb.load_balancer_zone_id}"
 }
 
+output "blue_external_clb_load_balancer_arns" {
+  value = "${module.blue_cluster_external_clb.load_balancer_arns}"
+}
+
 ########
 # GREEN
 ########
@@ -48,4 +52,8 @@ output "green_external_clb_load_balancer_id" {
 
 output "green_external_clb_load_balancer_zone_id" {
   value = "${module.green_cluster_external_clb.load_balancer_zone_id}"
+}
+
+output "green_external_clb_load_balancer_arns" {
+  value = "${module.green_cluster_external_clb.load_balancer_arns}"
 }
