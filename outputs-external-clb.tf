@@ -2,9 +2,9 @@
 # DNS
 #####
 
-output "external_clb_weighted_fqdn" {
-  value = "${element(coalescelist(aws_route53_record.blue_cluster_external_clb.*.fqdn, aws_route53_record.green_cluster_external_clb.*.fqdn, list("")), 0)}"
-}
+# output "external_clb_weighted_fqdn" {
+#   value = "${element(coalescelist(aws_route53_record.blue_cluster_external_clb.*.fqdn, aws_route53_record.green_cluster_external_clb.*.fqdn, list("")), 0)}"
+# }
 
 output "external_clb_weighted_dns_name" {
   value = "${element(coalescelist(aws_route53_record.blue_cluster_external_clb.*.name, aws_route53_record.green_cluster_external_clb.*.name, list("")), 0)}"
