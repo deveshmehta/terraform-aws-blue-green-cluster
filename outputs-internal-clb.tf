@@ -2,9 +2,9 @@
 # DNS
 #####
 
-output "internal_clb_weighted_fqdn" {
-  value = "${element(coalescelist(aws_route53_record.blue_cluster_internal_clb.*.fqdn, aws_route53_record.green_cluster_internal_clb.*.fqdn, list("")), 0)}"
-}
+# output "internal_clb_weighted_fqdn" {
+#   value = "${element(coalescelist(aws_route53_record.blue_cluster_internal_clb.*.fqdn, aws_route53_record.green_cluster_internal_clb.*.fqdn, list("")), 0)}"
+# }
 
 output "internal_clb_weighted_dns_name" {
   value = "${element(coalescelist(aws_route53_record.blue_cluster_internal_clb.*.name, aws_route53_record.green_cluster_internal_clb.*.name, list("")), 0)}"
