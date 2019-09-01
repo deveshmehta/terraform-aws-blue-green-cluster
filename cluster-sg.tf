@@ -45,7 +45,7 @@ resource "aws_security_group_rule" "cluster_sg_ingress_from_blue_internal_alb" {
   from_port                = "${element(var.blue_application_ports, count.index)}"
   to_port                  = "${element(var.blue_application_ports, count.index)}"
   protocol                 = "tcp"
-  description              = "${var.cluster_name} Blue ALB"
+  description              = "${var.cluster_name} Internal Blue ALB"
   security_group_id        = "${module.cluster_sg.this_security_group_id}"
   source_security_group_id = "${module.blue_cluster_internal_alb.security_group_id}"
   depends_on               = ["module.blue_cluster_internal_alb"]
@@ -58,7 +58,7 @@ resource "aws_security_group_rule" "cluster_sg_ingress_from_green_internal_alb" 
   from_port                = "${element(var.green_application_ports, count.index)}"
   to_port                  = "${element(var.green_application_ports, count.index)}"
   protocol                 = "tcp"
-  description              = "${var.cluster_name} Green ALB"
+  description              = "${var.cluster_name} Internal Green ALB"
   security_group_id        = "${module.cluster_sg.this_security_group_id}"
   source_security_group_id = "${module.green_cluster_internal_alb.security_group_id}"
   depends_on               = ["module.green_cluster_internal_alb"]
@@ -71,7 +71,7 @@ resource "aws_security_group_rule" "cluster_sg_ingress_from_blue_external_alb" {
   from_port                = "${element(var.blue_application_ports, count.index)}"
   to_port                  = "${element(var.blue_application_ports, count.index)}"
   protocol                 = "tcp"
-  description              = "${var.cluster_name} Blue ALB"
+  description              = "${var.cluster_name} External Blue ALB"
   security_group_id        = "${module.cluster_sg.this_security_group_id}"
   source_security_group_id = "${module.blue_cluster_external_alb.security_group_id}"
   depends_on               = ["module.blue_cluster_external_alb"]
@@ -84,7 +84,7 @@ resource "aws_security_group_rule" "cluster_sg_ingress_from_green_external_alb" 
   from_port                = "${element(var.green_application_ports, count.index)}"
   to_port                  = "${element(var.green_application_ports, count.index)}"
   protocol                 = "tcp"
-  description              = "${var.cluster_name} Green ALB"
+  description              = "${var.cluster_name} External Green ALB"
   security_group_id        = "${module.cluster_sg.this_security_group_id}"
   source_security_group_id = "${module.green_cluster_external_alb.security_group_id}"
   depends_on               = ["module.green_cluster_external_alb"]
@@ -99,4 +99,30 @@ resource "aws_security_group_rule" "cluster_sg_egress_to_cloudwatch_vpc_endpoint
   security_group_id        = "${module.cluster_sg.this_security_group_id}"
   source_security_group_id = "${data.aws_security_group.cloudwatch_vpc_endpoint_sg.id}"
   depends_on               = ["module.cluster_sg"]
+}
+
+resource "aws_security_group_rule" "cluster_sg_ingress_from_blue_internal_elb" {
+  count = "${var.internal_elb_enabled ? length(var.blue_application_ports) : 0}"
+
+  type                     = "ingress"
+  from_port                = "${element(var.blue_application_ports, count.index)}"
+  to_port                  = "${element(var.blue_application_ports, count.index)}"
+  protocol                 = "tcp"
+  description              = "${var.cluster_name} Internal Blue ELB"
+  security_group_id        = "${module.cluster_sg.this_security_group_id}"
+  source_security_group_id = "${module.blue_cluster_internal_elb.security_group_id}"
+  depends_on               = ["module.blue_cluster_internal_elb"]
+}
+
+resource "aws_security_group_rule" "cluster_sg_ingress_from_green_internal_elb" {
+  count = "${var.internal_elb_enabled ? length(var.green_application_ports) : 0}"
+
+  type                     = "ingress"
+  from_port                = "${element(var.green_application_ports, count.index)}"
+  to_port                  = "${element(var.green_application_ports, count.index)}"
+  protocol                 = "tcp"
+  description              = "${var.cluster_name} Internal Green ELB"
+  security_group_id        = "${module.cluster_sg.this_security_group_id}"
+  source_security_group_id = "${module.green_cluster_internal_elb.security_group_id}"
+  depends_on               = ["module.green_cluster_internal_elb"]
 }

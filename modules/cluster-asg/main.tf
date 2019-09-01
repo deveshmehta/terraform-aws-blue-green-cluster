@@ -2,9 +2,8 @@
 # Options ASG Resource Primary
 ##################################################################################
 module "cluster_asg" {
-  source = "git::https://gitlab.awscmg-dev.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-autoscaling.git?ref=feature/clb_support"
-
-  #source = "git::https://gitlab.awscmg-dev.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-autoscaling.git"
+  
+  source = "git::https://gitlab.awscmg-dev.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-autoscaling.git"
 
   name                                        = "${var.cluster_name}-${var.color}-svc"
   create_asg_with_initial_lifecycle_hook      = true
@@ -25,10 +24,10 @@ EOF
   user_data                    = "${var.user_data}"
   security_groups              = ["${var.security_groups}"]
   target_group_arns            = ["${compact(flatten(var.target_group_arns))}"]      # in case any blanks...
-  load_balancer_arns           = ["${compact(flatten(var.clb_load_balancer_arns))}"] # in case any blanks...
+  #load_balancer_arns           = ["${compact(flatten(var.elb_load_balancer_arns))}"] # in case any blanks...
   iam_instance_profile         = "${var.iam_instance_profile}"
   recreate_asg_when_lc_changes = true
-  load_balancers               = ["${var.load_balancers}"]
+  load_balancers               = ["${var.elb_load_balancer_arns}"]
   # Auto scaling group
   asg_name                  = "${var.cluster_name}-${var.color}-asg"
   vpc_zone_identifier       = "${var.subnet_ids}"

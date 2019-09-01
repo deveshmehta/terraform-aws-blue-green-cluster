@@ -33,12 +33,12 @@ variable "internal_alb_enabled" {
   default     = true
 }
 
-variable "external_clb_enabled" {
-  description = "Whether to create an external CLB or not"
+variable "external_elb_enabled" {
+  description = "Whether to create an external elb or not"
   default     = false
 }
 
-variable "internal_clb_enabled" {
-  description = "Whether to create an internal CLB or not"
+variable "internal_elb_enabled" {
+  description = "Whether to create an internal elb or not"
   default     = false
 }

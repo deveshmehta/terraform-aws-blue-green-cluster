@@ -22,10 +22,10 @@ module "green_cluster_asg" {
     "${element(concat(module.green_cluster_external_alb.target_group_arns, module.green_cluster_external_nlb.target_group_arns, list("")), 0)}",
   ]
 
-  # clb_load_balancer_arns = [
-  #   "${element(concat(module.green_cluster_internal_clb.load_balancer_arns, list("")), 0)}",
-  #   "${element(concat(module.green_cluster_external_clb.load_balancer_arns, list("")), 0)}",
-  # ]
+  elb_load_balancer_arns = [
+    "${element(concat(module.green_cluster_internal_elb.name, list("")), 0)}",
+    # "${element(concat(module.green_cluster_external_elb.load_balancer_arns, list("")), 0)}",
+  ]
 
   iam_instance_profile = "${aws_iam_instance_profile.instance_profile.arn}"
   # Auto scaling group

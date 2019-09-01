@@ -130,16 +130,16 @@ variable "blue_nlb_https_listeners_count" {
   default     = 0
 }
 
-variable "blue_clb_listeners" {
-  description = "The listeners to attach to the blue CLB"
+variable "blue_elb_listeners" {
+  description = "The listeners to attach to the blue elb"
   type        = "list"
   default     = []
 }
 
-variable "blue_clb_health_check" {
-  description = "The health check map of blue CLB."
-  type        = "map"
-  default     = {}
+variable "blue_elb_health_check" {
+  description = "The health check map of blue elb."
+  type        = "list"
+  default     = []
 }
 
 variable "blue_nlb_https_listeners" {

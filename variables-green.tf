@@ -92,16 +92,16 @@ variable "green_target_groups" {
   default     = []
 }
 
-variable "green_clb_listeners" {
-  description = "The listeners to attach to the green CLB"
+variable "green_elb_listeners" {
+  description = "The listeners to attach to the green elb"
   type        = "list"
   default     = []
 }
 
-variable "green_clb_health_check" {
-  description = "The health check map of green CLB."
-  type        = "map"
-  default     = {}
+variable "green_elb_health_check" {
+  description = "The health check map of green elb."
+  type        = "list"
+  default     = []
 }
 
 variable "green_alb_https_listeners_count" {
