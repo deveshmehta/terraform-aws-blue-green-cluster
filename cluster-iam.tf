@@ -23,11 +23,11 @@ data "aws_iam_policy_document" "cloudwatch_logs" {
       "logs:CreateLogGroup",
       "logs:CreateLogStream",
       "logs:PutLogEvents",
-      "logs:DescribeLogStreams"
+      "logs:DescribeLogStreams",
     ]
 
     resources = [
-      "arn:aws:logs:${var.cluster_name}-logs:*"
+      "arn:aws:logs:${var.cluster_name}-logs:*",
     ]
   }
 }

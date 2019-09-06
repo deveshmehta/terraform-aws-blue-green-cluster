@@ -150,8 +150,8 @@ variable "enabled" {
 
 variable "application_ports" {
   description = "The ports that the application listens on.  Used to automate egress rules on the ALB"
-  type = "list"
-  default = []
+  type        = "list"
+  default     = []
 }
 
 variable "application_security_group_id" {

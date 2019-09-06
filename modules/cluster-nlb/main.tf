@@ -6,15 +6,15 @@ module "cluster_nlb" {
 
   # source = "../../../cmg-terraform-aws-alb"
 
-  enabled = "${var.enabled}"
-  load_balancer_type = "network"
-  load_balancer_name        = "${var.cluster_name}-${var.color}-${var.load_balancer_is_internal ? "int" : "ext"}-nlb"
-  load_balancer_is_internal = "${var.load_balancer_is_internal}"
+  enabled                          = "${var.enabled}"
+  load_balancer_type               = "network"
+  load_balancer_name               = "${var.cluster_name}-${var.color}-${var.load_balancer_is_internal ? "int" : "ext"}-nlb"
+  load_balancer_is_internal        = "${var.load_balancer_is_internal}"
   enable_cross_zone_load_balancing = true
   enable_deletion_protection       = false
-  log_bucket_name     = "${var.log_bucket_name}"
-  log_location_prefix = "${var.cluster_name}-${var.color}-${var.load_balancer_is_internal ? "internal" : "external"}-nlb-logs"
-  subnets             = "${split(",", var.subnets)}"
+  log_bucket_name                  = "${var.log_bucket_name}"
+  log_location_prefix              = "${var.cluster_name}-${var.color}-${var.load_balancer_is_internal ? "internal" : "external"}-nlb-logs"
+  subnets                          = "${split(",", var.subnets)}"
   tags = "${map(
     "Environment", "${terraform.workspace}",
     "Workspace", "${terraform.workspace}",
@@ -29,13 +29,13 @@ module "cluster_nlb" {
     "Terraform", "True",
     "Persistence", "false"
   )}"
-  vpc_id = "${var.vpc_id}"
-  https_listeners_count = "${var.https_listeners_count}"
-  https_listeners       = "${var.https_listeners}"
+  vpc_id                   = "${var.vpc_id}"
+  https_listeners_count    = "${var.https_listeners_count}"
+  https_listeners          = "${var.https_listeners}"
   http_tcp_listeners_count = "${var.http_tcp_listeners_count}"
   http_tcp_listeners       = "${var.http_tcp_listeners}"
-  target_groups_count = "${var.target_groups_count}"
-  target_groups       = "${var.target_groups}"
+  target_groups_count      = "${var.target_groups_count}"
+  target_groups            = "${var.target_groups}"
 }
 
 ##################################################################################

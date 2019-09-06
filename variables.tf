@@ -32,3 +32,13 @@ variable "internal_alb_enabled" {
   description = "Whether to create an internal ALB or not"
   default     = true
 }
+
+variable "external_elb_enabled" {
+  description = "Whether to create an external elb or not"
+  default     = false
+}
+
+variable "internal_elb_enabled" {
+  description = "Whether to create an internal elb or not"
+  default     = false
+}
