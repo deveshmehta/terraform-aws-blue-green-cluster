@@ -43,12 +43,12 @@ variable "blue_wait_for_capacity_timeout" {
 
 variable "blue_recurrence_start" {
   description = "When to start the instances"
-  default = "false"
+  default     = "false"
 }
 
 variable "blue_recurrence_stop" {
   description = "When to stop the instances"
-  default = "false"
+  default     = "false"
 }
 
 variable "blue_min_size_start" {
@@ -128,6 +128,18 @@ variable "blue_external_alb_target_groups" {
 variable "blue_nlb_https_listeners_count" {
   description = "The number of HTTPS listeners to attach the blue NLB"
   default     = 0
+}
+
+variable "blue_elb_listeners" {
+  description = "The listeners to attach to the blue elb"
+  type        = "list"
+  default     = []
+}
+
+variable "blue_elb_health_check" {
+  description = "The health check map of blue elb."
+  type        = "list"
+  default     = []
 }
 
 variable "blue_nlb_https_listeners" {

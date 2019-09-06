@@ -9,7 +9,7 @@ module "cluster_alb_sg" {
   vpc_id      = "${var.vpc_id}"
 
   # egress_rules = ["all-all"]
-  egress_cidr_blocks = []
+  egress_cidr_blocks      = []
   egress_ipv6_cidr_blocks = []
 
   create = "${var.enabled}" # sg module uses `create` not `enabled` variable

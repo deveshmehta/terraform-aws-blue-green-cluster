@@ -62,12 +62,9 @@ output "blue_internal_alb_target_group_names" {
   value = "${module.blue_cluster_internal_alb.target_group_names}"
 }
 
-
-
 ########
 # GREEN
 ########
-
 
 output "green_internal_alb_security_group_id" {
   value = "${module.green_cluster_internal_alb.security_group_id}"
