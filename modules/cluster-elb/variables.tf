@@ -4,6 +4,7 @@ variable "vpc_id" {
 
 variable "domain_prefix" {
   description = "The domain prefix to use for the ELB"
+  default     = ""
 }
 
 variable "route53_domain_name" {
@@ -31,6 +32,7 @@ variable "instance_port" {
 
 variable "instance_security_group_id" {
   description = "The security group to allow access to the listener"
+  default     = ""
 }
 
 variable "computed_ingress_with_source_security_group_id" {

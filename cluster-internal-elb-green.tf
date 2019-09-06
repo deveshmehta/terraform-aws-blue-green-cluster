@@ -40,10 +40,6 @@ module "green_cluster_internal_elb" {
   application_ports             = "${var.green_application_ports}"
   application_security_group_id = "${module.cluster_sg.this_security_group_id}"
 
-  # Outbound listener security group
-  instance_security_group_id = "abc"
-  domain_prefix = "bcd"
-
   product        = "${var.product}"
   product_family = "${var.product_family}"
   role           = "${var.role} INTERNAL BLUE"
