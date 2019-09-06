@@ -29,10 +29,9 @@ resource "aws_elb" "elb" {
   listener = [
     {
       instance_port      = "443"
-      instance_protocol  = "SSL"
+      instance_protocol  = "TCP"
       lb_port            = "443"
-      lb_protocol        = "SSL"
-      ssl_certificate_id = "${var.ssl_certificate}"
+      lb_protocol        = "TCP"
     }
   ]
 
