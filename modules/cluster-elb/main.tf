@@ -37,7 +37,7 @@ resource "aws_elb" "elb" {
 
   health_check = [
     {
-      target              = "SSL:443"
+      target              = "TCP:443"
       interval            = 30
       healthy_threshold   = 2
       unhealthy_threshold = 2

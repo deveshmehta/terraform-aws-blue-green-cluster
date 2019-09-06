@@ -42,10 +42,6 @@ output "green_internal_elb_dns_name" {
   value = "${module.green_cluster_internal_elb.dns_name}"
 }
 
-# output "green_internal_elb_load_balancer_arn_suffix" {
-#   value = "${module.green_cluster_internal_elb.load_balancer_arn_suffix}"
-# }
-
 output "green_internal_elb_load_balancer_id" {
   value = "${module.green_cluster_internal_elb.id}"
 }

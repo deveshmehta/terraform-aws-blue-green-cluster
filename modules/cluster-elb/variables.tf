@@ -2,11 +2,6 @@ variable "vpc_id" {
   description = "The ID of the VPC in which the nodes will be deployed."
 }
 
-variable "domain_prefix" {
-  description = "The domain prefix to use for the ELB"
-  default     = ""
-}
-
 variable "route53_domain_name" {
   description = "The base DNS name for the account"
 }
@@ -28,11 +23,6 @@ variable "ssl_certificate" {
 variable "instance_port" {
   description = "The port on the backend servers that is open to the ELB, e.g. what the microservice API is listening on"
   default     = 8080
-}
-
-variable "instance_security_group_id" {
-  description = "The security group to allow access to the listener"
-  default     = ""
 }
 
 variable "computed_ingress_with_source_security_group_id" {
