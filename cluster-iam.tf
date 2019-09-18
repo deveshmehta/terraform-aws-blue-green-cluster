@@ -42,7 +42,7 @@ data "aws_iam_policy_document" "cloudwatch_metrics" {
       "cloudwatch:PutMetricData",
       "cloudwatch:GetMetricStatistics",
       "cloudwatch:ListMetrics",
-      "ec2:DescribeTags".
+      "ec2:DescribeTags",
     ]
 
     resources = [
