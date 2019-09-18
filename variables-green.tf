@@ -43,12 +43,12 @@ variable "green_wait_for_capacity_timeout" {
 
 variable "green_recurrence_start" {
   description = "When to start the green instances"
-  default = "false"
+  default     = "false"
 }
 
 variable "green_recurrence_stop" {
   description = "When to stop the green instances"
-  default = "false"
+  default     = "false"
 }
 
 variable "green_min_size_start" {
@@ -88,6 +88,18 @@ variable "green_target_groups_count" {
 
 variable "green_target_groups" {
   description = "The target groups to attach to the green ALB"
+  type        = "list"
+  default     = []
+}
+
+variable "green_elb_listeners" {
+  description = "The listeners to attach to the green elb"
+  type        = "list"
+  default     = []
+}
+
+variable "green_elb_health_check" {
+  description = "The health check map of green elb."
   type        = "list"
   default     = []
 }

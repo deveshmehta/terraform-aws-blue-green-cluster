@@ -29,7 +29,7 @@ data "aws_iam_policy_document" "cluster_alb_log_bucket_policy" {
   }
 
   statement {
-    sid    = "AWSLogDeliveryWrite"
+    sid     = "AWSLogDeliveryWrite"
     actions = ["s3:PutObject"]
 
     resources = [
@@ -40,21 +40,21 @@ data "aws_iam_policy_document" "cluster_alb_log_bucket_policy" {
     ]
 
     principals {
-      type = "Service"
+      type        = "Service"
       identifiers = ["delivery.logs.amazonaws.com"]
     }
   }
 
   statement {
-    sid = "AWSLogDeliveryAclCheck"
+    sid     = "AWSLogDeliveryAclCheck"
     actions = ["s3:GetBucketAcl"]
 
     resources = [
-      "arn:aws:s3:::${var.cluster_name}-logs"
+      "arn:aws:s3:::${var.cluster_name}-logs",
     ]
 
     principals {
-      type = "Service"
+      type        = "Service"
       identifiers = ["delivery.logs.amazonaws.com"]
     }
   }
@@ -70,8 +70,10 @@ data "aws_security_group" "cloudwatch_vpc_endpoint_sg" {
 #     values = ["*-squid-proxy-sg"]
 #   }
 
+
 #   filter {
 #     name = "tag:Workspace"
 #     values = ["${data.aws_vpc.vpc.tags["Name"]}"]
 #   }
 # }
+

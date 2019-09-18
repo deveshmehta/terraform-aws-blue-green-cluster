@@ -26,7 +26,19 @@ variable "target_group_arns" {
   default     = []
 }
 
+variable "elb_load_balancer_arns" {
+  description = "The target groups from the load balancer to attach the new instances to"
+  type        = "list"
+  default     = []
+}
+
 variable "security_groups" {
+  description = "The security groups to attach to the ASG instances"
+  type        = "list"
+  default     = []
+}
+
+variable "load_balancers" {
   description = "The security groups to attach to the ASG instances"
   type        = "list"
   default     = []
@@ -54,42 +66,42 @@ variable "wait_for_capacity_timeout" {
 
 variable "recurrence_start" {
   description = "When to start the instances"
-  default = "false"
+  default     = "false"
 }
 
 variable "recurrence_stop" {
   description = "When to stop the instances"
-  default = "false"
+  default     = "false"
 }
 
 variable "min_size_start" {
   description = "How many instances to start when the ASG start hook is triggered"
-  default = 1
+  default     = 1
 }
 
 variable "max_size_start" {
   description = "How many instances to start when the ASG start hook is triggered"
-  default = 1
+  default     = 1
 }
 
 variable "desired_capacity_start" {
   description = "How many instances to start when the ASG start hook is triggered"
-  default = 1
+  default     = 1
 }
 
 variable "min_size_stop" {
   description = "How many instances to stop when the ASG stop hook is triggered"
-  default = 0
+  default     = 0
 }
 
 variable "max_size_stop" {
   description = "How many instances to stop when the ASG stop hook is triggered"
-  default = 0
+  default     = 0
 }
 
 variable "desired_capacity_stop" {
   description = "How many instances to stop when the ASG stop hook is triggered"
-  default = 0
+  default     = 0
 }
 
 variable "iam_instance_profile" {

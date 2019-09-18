@@ -58,7 +58,6 @@ output "blue_external_nlb_target_group_names" {
   value = "${module.blue_cluster_external_nlb.target_group_names}"
 }
 
-
 ########
 # GREEN
 ########

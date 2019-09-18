@@ -25,7 +25,7 @@ module "blue_cluster_external_alb" {
   computed_egress_with_cidr_blocks           = "${var.external_alb_computed_egress_with_cidr_blocks}"
   number_of_computed_egress_with_cidr_blocks = "${var.external_alb_number_of_computed_egress_with_cidr_blocks}"
 
-  application_ports = "${var.blue_application_ports}"
+  application_ports             = "${var.blue_application_ports}"
   application_security_group_id = "${module.cluster_sg.this_security_group_id}"
 
   log_bucket_name = "${aws_s3_bucket.log_bucket.id}"
