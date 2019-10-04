@@ -14,6 +14,7 @@ resource "aws_elb" "elb" {
   subnets             = ["${var.subnet_ids}"]
   internal            = true
 
+  idle_timeout        = "${var.idle_timeout}"
 
   security_groups     = [
     "${module.elb_security_group.this_security_group_id}"

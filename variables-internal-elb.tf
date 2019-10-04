@@ -65,3 +65,8 @@ variable "blue_certificate_arn" {
 variable "green_certificate_arn" {
   description = "The SSL certitificate to attach to the ALB listencers for the blue cluster"
 }
+
+variable "internal_elb_idle_timeout" {
+  description = "How long to keep idle connections alive on the internal ELB"
+  default = 60
+}

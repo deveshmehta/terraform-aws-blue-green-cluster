@@ -65,6 +65,8 @@ module "cluster_alb" {
   load_balancer_name        = "${var.cluster_name}-${var.color}-${var.load_balancer_is_internal ? "int" : "ext"}-alb"
   load_balancer_is_internal = "${var.load_balancer_is_internal}"
 
+  idle_timeout        = "${var.idle_timeout}"
+
   security_groups = [
     "${module.cluster_alb_sg.this_security_group_id}",
     "${var.security_groups}",

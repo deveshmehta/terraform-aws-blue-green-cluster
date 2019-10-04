@@ -57,3 +57,8 @@ variable "external_alb_number_of_computed_egress_with_cidr_blocks" {
   description = "The count of computed egress cidr blocks for the cluster albs"
   default     = 0
 }
+
+variable "external_alb_idle_timeout" {
+  description = "How long to keep idle connections alive on the external ALB"
+  default = 60
+}

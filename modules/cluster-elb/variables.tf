@@ -139,3 +139,8 @@ variable "route53_aliases_name" {
 variable "route53_zone_id" {
   description = "Route53 Zone ID"
 }
+
+variable "idle_timeout" {
+  description = "How long to keep idle connections alive"
+  default = 60
+}

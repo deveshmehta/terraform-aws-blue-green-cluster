@@ -16,8 +16,10 @@ module "green_cluster_internal_elb" {
   route53_zone_id      = "${var.internal_alb_route53_zone_id}"
 
   route53_aliases_name = ["${var.cluster_name}-internal-elb-green"]
-  
+
   ssl_certificate     = "${var.green_certificate_arn}"
+
+  idle_timeout = "${var.internal_elb_idle_timeout}"
 
   # Public access
   computed_ingress_with_source_security_group_id = "${var.internal_alb_computed_ingress_with_source_security_group_id}"
@@ -57,7 +59,7 @@ module "green_cluster_internal_elb" {
 #   elb                     = "${module.green_cluster_internal_elb.id[0]}"
 
 #   depends_on = [
-#     "module.green_cluster_internal_elb", 
+#     "module.green_cluster_internal_elb",
 #     "module.green_cluster_asg"
 #   ]
 # }

@@ -97,3 +97,8 @@ variable "enabled" {
   description = "Whether to provision an NLB or not"
   default     = false
 }
+
+variable "idle_timeout" {
+  description = "How long to keep idle connections alive"
+  default = 60
+}

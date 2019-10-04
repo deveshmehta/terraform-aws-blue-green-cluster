@@ -157,3 +157,8 @@ variable "application_ports" {
 variable "application_security_group_id" {
   description = "The securtiy group attached the application ASG instances. Used to automate egress rules on the ALB"
 }
+
+variable "idle_timeout" {
+  description = "How long to keep idle connections alive"
+  default = 60
+}

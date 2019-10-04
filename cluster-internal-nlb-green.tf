@@ -13,6 +13,8 @@ module "green_cluster_internal_nlb" {
 
   log_bucket_name = "${aws_s3_bucket.log_bucket.id}"
 
+  idle_timeout = "${var.internal_nlb_idle_timeout}"
+
   product        = "${var.product}"
   product_family = "${var.product_family}"
   role           = "${var.role} INTERNAL GREEN"

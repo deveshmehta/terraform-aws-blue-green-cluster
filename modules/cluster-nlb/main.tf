@@ -15,6 +15,8 @@ module "cluster_nlb" {
   log_bucket_name                  = "${var.log_bucket_name}"
   log_location_prefix              = "${var.cluster_name}-${var.color}-${var.load_balancer_is_internal ? "internal" : "external"}-nlb-logs"
   subnets                          = "${split(",", var.subnets)}"
+
+  idle_timeout                     = "${var.idle_timeout}"
   tags = "${map(
     "Environment", "${terraform.workspace}",
     "Workspace", "${terraform.workspace}",
