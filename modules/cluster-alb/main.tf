@@ -2,7 +2,7 @@
 # ALB SECURITY GROUPS
 ##################################################################################
 module "cluster_alb_sg" {
-  source = "git::https://gitlab.awscmg-dev.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-security-group.git"
+  source = "git::https://gitlab.awscmg-dev.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-security-group.git?ref=v2.15.1"
 
   name        = "${var.cluster_name}-${var.color}-${var.load_balancer_is_internal ? "internal" : "external"}-alb-sg"
   description = "${var.cluster_name} ${var.color} ALB Security Group"
