@@ -113,7 +113,7 @@ resource "aws_s3_bucket" "elb_log_bucket" {
 # ELB SECURITY GROUPS
 ##################################################################################
 module "elb_security_group" {
-  source = "git::https://gitlab.nonprod.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-security-group.git?ref=v2.15.1"
+  source = "git::https://gitlab.awscmg-dev.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-security-group.git?ref=v2.15.1"
 
   name         = "${local.name}-sg"
   description  = "${var.cluster_name} ELB Security Group"
