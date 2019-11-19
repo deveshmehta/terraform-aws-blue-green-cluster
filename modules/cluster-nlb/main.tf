@@ -47,7 +47,7 @@ module "cluster_nlb" {
 module "cluster_nlb_route53_aliases" {
   enabled = "${var.enabled ? "true" : "false"}"
 
-  source          = "git::https://gitlab.awscmg-dev.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-route53-alias.git"
+  source          = "git::https://gitlab.awscmg-dev.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-route53-alias.git?ref=0.2.7"
   aliases         = "${var.route53_aliases_name}"
   parent_zone_id  = "${var.route53_zone_id}"
   target_dns_name = "${module.cluster_nlb.dns_name}"

@@ -7,7 +7,7 @@ locals {
 }
 
 resource "aws_elb" "elb" {
-  count = "${var.enabled ? 1 : 0}"
+  count = "${var.elb_enabled ? 1 : 0}"
 
   name                = "${local.name}"
 
@@ -89,6 +89,7 @@ data "aws_iam_policy_document" "elb_log_bucket_policy" {
 }
 
 resource "aws_s3_bucket" "elb_log_bucket" {
+  count = "${var.elb_enabled ? 1 : 0}"
   bucket        = "${local.name}-logs"
   policy        = "${data.aws_iam_policy_document.elb_log_bucket_policy.json}"
   force_destroy = true
@@ -122,7 +123,7 @@ module "elb_security_group" {
   egress_cidr_blocks      = []
   egress_ipv6_cidr_blocks = []
 
-  create = "${var.enabled}" # sg module uses `create` not `enabled` variable
+  create = "${var.elb_sg_route53_enabled}" # sg module uses `create` not `enabled` variable
 
   tags = "${merge(
     map("Name", "${local.name}-sg"),
@@ -148,7 +149,7 @@ module "elb_security_group" {
 
 ## Add Egress rules to the ELB
 resource "aws_security_group_rule" "cluster_elb_egress_to_application" {
-  count = "${var.enabled ? length(var.application_ports) : 0}"
+  count = "${var.elb_sg_route53_enabled ? length(var.application_ports) : 0}"
 
   type                     = "egress"
   from_port                = "${element(var.application_ports, count.index)}"
@@ -165,11 +166,11 @@ resource "aws_security_group_rule" "cluster_elb_egress_to_application" {
 ##################################################################################
 
 module "cluster_elb_route53_aliases" {
-  enabled = "${var.enabled ? "true" : "false"}"
-
-  source          = "git::https://gitlab.awscmg-dev.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-route53-alias.git"
+  source          = "git::https://gitlab.awscmg-dev.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-route53-alias.git?ref=0.2.7"
+  #source         = "../../../../modules/cmg-terraform-aws-route53-alias"
+  enabled         = "${var.elb_sg_route53_enabled ? "true" : "false"}"
   aliases         = "${var.route53_aliases_name}"
   parent_zone_id  = "${var.route53_zone_id}"
-  target_dns_name = "${aws_elb.elb.dns_name}"
-  target_zone_id  = "${aws_elb.elb.zone_id}"
+  target_dns_name = "${element(concat(aws_elb.elb.*.dns_name, list("")), 0)}"
+  target_zone_id  = "${element(concat(aws_elb.elb.*.zone_id, list("")), 0)}"
 }

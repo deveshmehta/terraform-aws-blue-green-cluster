@@ -9,7 +9,9 @@ module "green_cluster_internal_elb" {
 
   color        = "green"
 
-  enabled = "${var.internal_elb_enabled}"
+  elb_enabled = "${var.internal_elb_enabled}"
+
+  elb_sg_route53_enabled = "${var.internal_elb_sg_route53_enabled}"
 
   route53_domain_name = "${var.internal_alb_route53_zone_id}"
 
