@@ -36,11 +36,6 @@ variable "elb_enabled" {
   default     = "false"
 }
 
-variable "elb_sg_route53_enabled" {
-  description = "Whether to provision an ALB or not"
-  default     = "false"
-}
-
 variable "number_of_computed_ingress_with_source_security_group_id" {
   description = "The count of computed ingress security groups by ID"
   default     = 0

@@ -77,8 +77,3 @@ variable "internal_elb_enabled" {
   description = "Whether to provision an ALB or not"
   default     = "0"
 }
-
-variable "internal_elb_sg_route53_enabled" {
-  description = "Whether to provision an ALB or not"
-  default     = "false"
-}
