@@ -60,13 +60,20 @@ variable "internal_elb_number_of_computed_egress_with_cidr_blocks" {
 
 variable "blue_certificate_arn" {
   description = "The SSL certitificate to attach to the ALB listencers for the blue cluster"
+  default     = ""
 }
 
 variable "green_certificate_arn" {
   description = "The SSL certitificate to attach to the ALB listencers for the blue cluster"
+  default     = ""
 }
 
 variable "internal_elb_idle_timeout" {
   description = "How long to keep idle connections alive on the internal ELB"
   default = 60
+}
+
+variable "internal_elb_enabled" {
+  description = "Whether to provision an ALB or not"
+  default     = "0"
 }
