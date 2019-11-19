@@ -31,9 +31,9 @@ variable "computed_ingress_with_source_security_group_id" {
   default     = []
 }
 
-variable "enabled" {
+variable "elb_enabled" {
   description = "Whether to provision an ALB or not"
-  default     = true
+  default     = "false"
 }
 
 variable "number_of_computed_ingress_with_source_security_group_id" {
@@ -138,6 +138,7 @@ variable "route53_aliases_name" {
 
 variable "route53_zone_id" {
   description = "Route53 Zone ID"
+  default = ""
 }
 
 variable "idle_timeout" {
