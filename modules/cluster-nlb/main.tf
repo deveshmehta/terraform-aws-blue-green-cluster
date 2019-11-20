@@ -2,7 +2,7 @@
 # NLB
 ##################################################################################
 module "cluster_nlb" {
-  source = "git::https://gitlab.awscmg-dev.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-alb.git?ref=feature/nlb-support-with-enabled-option"
+  source = "git::https://gitlab.awscmg-dev.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-alb.git?ref=v3.5.2"
 
   # source = "../../../cmg-terraform-aws-alb"
 

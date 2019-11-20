@@ -58,7 +58,7 @@ resource "aws_security_group_rule" "cluster_alb_egress_to_application" {
 # ALB
 ##################################################################################
 module "cluster_alb" {
-  source = "git::https://gitlab.awscmg-dev.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-alb.git?ref=v3.5.1"
+  source = "git::https://gitlab.awscmg-dev.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-alb.git?ref=v3.5.2"
 
   enabled = "${var.enabled}"
 
