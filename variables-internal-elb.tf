@@ -77,3 +77,8 @@ variable "internal_elb_enabled" {
   description = "Whether to provision an ALB or not"
   default     = "0"
 }
+
+variable "elb_health_check_target_port" {
+  description = "Target port of ELB Health Check"
+  default = 443
+}

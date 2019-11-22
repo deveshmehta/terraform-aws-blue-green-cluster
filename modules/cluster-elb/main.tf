@@ -38,7 +38,7 @@ resource "aws_elb" "elb" {
 
   health_check = [
     {
-      target              = "TCP:443"
+      target              = "TCP:${var.elb_health_check_target_port}"
       interval            = 30
       healthy_threshold   = 2
       unhealthy_threshold = 2

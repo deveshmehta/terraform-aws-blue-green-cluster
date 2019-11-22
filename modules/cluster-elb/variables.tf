@@ -145,3 +145,8 @@ variable "idle_timeout" {
   description = "How long to keep idle connections alive"
   default = 60
 }
+
+variable "elb_health_check_target_port" {
+  description = "Target port of ELB Health Check"
+  default = 443
+}
