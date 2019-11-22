@@ -11,6 +11,8 @@ module "blue_cluster_internal_elb" {
 
   elb_enabled = "${var.internal_elb_enabled}"
 
+  elb_health_check_target_port = "${var.elb_health_check_target_port}"
+
   route53_domain_name = "${var.internal_alb_route53_zone_id}"
 
   route53_zone_id      = "${var.internal_alb_route53_zone_id}"
