@@ -32,3 +32,8 @@ variable "internal_alb_enabled" {
   description = "Whether to create an internal ALB or not"
   default     = true
 }
+
+variable "dlm_ebs_snapshot" {
+  description = "Values Ture "
+  default     = "False"
+}
