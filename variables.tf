@@ -34,6 +34,6 @@ variable "internal_alb_enabled" {
 }
 
 variable "dlm_ebs_snapshot" {
-  description = "Values Ture "
+  description = "Values True or False"
   default     = "False"
 }
