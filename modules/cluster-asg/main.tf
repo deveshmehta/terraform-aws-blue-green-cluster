@@ -48,6 +48,7 @@ EOF
     Version          = "${var.version_tag}"
     Persistence      = "true"
     Terraform        = "True"
+    dlm-ebs-snapshot = "${var.dlm_ebs_snapshot}"
   }
 }
 
