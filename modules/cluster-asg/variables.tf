@@ -12,12 +12,10 @@ variable "image_id" {
 
 variable "instance_type" {
   description = "The instance type to use for the cluster"
-  default     = "t2.small"
 }
 
 variable "ssh_key_name" {
   description = "The name of an EC2 Key Pair that can be used to SSH to the EC2 Instances in this cluster. Set to an empty string to not associate a Key Pair."
-  default     = ""
 }
 
 variable "target_group_arns" {
@@ -148,4 +146,9 @@ variable "owner" {
 variable "user_data" {
   description = "The user data to provide when launching the instance"
   default     = " "
+}
+
+variable "dlm_ebs_snapshot" {
+  description = "Values Ture "
+  default     = "False"
 }
