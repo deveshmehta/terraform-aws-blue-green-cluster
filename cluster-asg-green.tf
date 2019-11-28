@@ -48,4 +48,5 @@ module "green_cluster_asg" {
   cost_code                 = "${var.cost_code}"
   owner                     = "${var.owner}"
   version_tag               = "${var.green_version_tag}"
+  dlm_ebs_snapshot          = "${var.dlm_ebs_snapshot}"
 }
