@@ -113,7 +113,7 @@ resource "aws_s3_bucket" "elb_log_bucket" {
 # ELB SECURITY GROUPS
 ##################################################################################
 module "elb_security_group" {
-  source = "git::https://gitlab.awscmg-dev.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-security-group.git?ref=v2.15.1"
+  source = "terraform-aws-modules/security-group/aws"
 
   name         = "${local.name}-sg"
   description  = "${var.cluster_name} ELB Security Group"
@@ -166,8 +166,7 @@ resource "aws_security_group_rule" "cluster_elb_egress_to_application" {
 ##################################################################################
 
 module "cluster_elb_route53_aliases" {
-  source          = "git::https://gitlab.awscmg-dev.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-route53-alias.git?ref=0.2.7"
-  #source         = "../../../../modules/cmg-terraform-aws-route53-alias"
+  source          = "git::https://github.com/cloudposse/terraform-aws-route53-alias.git?ref=master"
   enabled         = "${var.elb_enabled ? "true" : "false"}"
   aliases         = "${var.route53_aliases_name}"
   parent_zone_id  = "${var.route53_zone_id}"

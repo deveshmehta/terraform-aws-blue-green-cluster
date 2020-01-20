@@ -3,7 +3,7 @@
 ##################################################################################
 module "cluster_asg" {
   
-  source = "git::https://gitlab.awscmg-dev.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-terraform-aws-autoscaling.git?ref=v2.9.1"
+  source = "terraform-aws-modules/autoscaling/aws"
 
   name                                        = "${var.cluster_name}-${var.color}-svc"
   create_asg_with_initial_lifecycle_hook      = true

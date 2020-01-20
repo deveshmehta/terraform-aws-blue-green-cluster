@@ -103,11 +103,11 @@ variable "number_of_instances" {
 
 
 variable "cost_code" {
-  description = "The code for the CMG costing"
+  description = "The code for the  costing"
 }
 
 variable "product_family" {
-  description = "The product family of the project, e.g. CMG FA"
+  description = "The product family of the project, e.g.  FA"
 }
 
 variable "product" {

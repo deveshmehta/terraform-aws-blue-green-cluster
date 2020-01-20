@@ -1,4 +1,4 @@
-# CMG Blue/Green Cluster Module
+#  Blue/Green Cluster Module
 
 This module provides the capacity to build a full blue/green clustered stack using either Application Load Balancer or Network Load Balancer.
 
@@ -44,11 +44,11 @@ It will build the following artifacts:
 Please see the following projects for implementation examples:
 
 ### Using ALB
-* https://gitlab.nonprod.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-nodejs-webapp-blue-green
-* https://gitlab.nonprod.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-nginx-proxy-blue-green
+* terraform-aws-nodejs-webapp-blue-green
+* terraform-aws-nginx-proxy-blue-green
 
 ### Using NLB
-* https://gitlab.nonprod.dwpcloud.uk/cmg-next-generation-services/DevOps/cmg-terraform/modules/cmg-squid-proxy-blue-green
+* terraform-aws-squid-proxy-blue-green
 
 
 ## Inputs
@@ -90,7 +90,7 @@ Please see the following projects for implementation examples:
 | blue\_wait\_for\_capacity\_timeout | How long to wait before timing out introducing the new green ASG instances | string | `"0"` | no |
 | blue\_weight | Weight of the DNS record for the blue cluster | string | n/a | yes |
 | cluster\_name | What to name the blue/green cluster and all of its associated resources | string | n/a | yes |
-| cost\_code | The code for the CMG costing | string | n/a | yes |
+| cost\_code | The code for the  costing | string | n/a | yes |
 | external\_alb\_computed\_egress\_with\_cidr\_blocks | List of objects describing the egress cidr blocks rules permitted for the cluster albs | list | `<list>` | no |
 | external\_alb\_computed\_egress\_with\_source\_security\_group\_id | List of objects describing the inbound security group rules permitted on the albs for the cluster | list | `<list>` | no |
 | external\_alb\_computed\_ingress\_with\_cidr\_blocks | List of objects describing the ingress cidr blocks rules permitted for the loadbalancer | list | `<list>` | no |
@@ -171,7 +171,7 @@ Please see the following projects for implementation examples:
 | internal\_nlb\_subnet\_ids | An list of subnet ID to attach the ELB to which are within the specified VPC | string | `""` | no |
 | owner | Product owner email address | string | n/a | yes |
 | product | Product | string | n/a | yes |
-| product\_family | The product family of the project, e.g. CMG FA | string | n/a | yes |
+| product\_family | The product family of the project, e.g.  FA | string | n/a | yes |
 | role | Role of the product within the account | string | n/a | yes |
 | ssh\_key\_name | The name of an EC2 Key Pair that can be used to SSH to the EC2 Instances in this cluster. Set to an empty string to not associate a Key Pair. | string | `""` | no |
 | tags | Additional tags to add to the cluster. | list | `<list>` | no |
